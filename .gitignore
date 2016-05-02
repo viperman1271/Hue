@@ -26,3 +26,34 @@
 *.exe
 *.out
 *.app
+
+# Temp files
+*.tlog
+*.log
+*.idb
+*.force
+*.vshost.*
+
+# Visual Studio Files
+*.user
+*.pdb
+*.cache
+*.sdf
+*.suo
+
+# Folders to ignore
+Debug/
+Release/
+Temp/
+cli_hue/Debug/
+cli_hue/Release/
+Hue/obj/
+Hue/bin/
+HueApplication/bin/
+HueApplication/obj/
+HueTests/bin/
+HueTests/obj/
+lib_hue/temp/
+lib_hue/Win32/
+lib_hue/tempWin32/
+libcurl_src/builds/
