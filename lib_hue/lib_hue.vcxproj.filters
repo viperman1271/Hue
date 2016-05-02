@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ObjectModel">
+      <UniqueIdentifier>{f6ff5056-dc3b-4f70-bfe0-8edb6b8ea7f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Callbacks">
+      <UniqueIdentifier>{27a556c2-5045-46a8-852b-9abbcefc1499}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="HueBridge.cpp" />
+    <ClCompile Include="ObjectModel\HueSystemInformation.cpp">
+      <Filter>ObjectModel</Filter>
+    </ClCompile>
+    <ClCompile Include="HueBridgeLocator.cpp" />
+    <ClCompile Include="UrlProvider.cpp" />
+    <ClCompile Include="HttpClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="ObjectModel\HueBridgeInfo.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueConfigInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueError.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueGroupActionInfo.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueGroupInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueLightInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueLightState.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueRegistration.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueResponse.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueRuleAction.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueRuleActionBody.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueRuleInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueSceneInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueSensorConfigInfo.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueSensorInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueSensorStateInfo.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueSystemInformation.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel\HueUserInfo.h">
+      <Filter>ObjectModel</Filter>
+    </ClInclude>
+    <ClInclude Include="UrlProvider.h" />
+    <ClInclude Include="HueBridge.h" />
+    <ClInclude Include="HueBridgeLocator.h" />
+    <ClInclude Include="HttpClient.h" />
+    <ClInclude Include="Callbacks.h" />
+  </ItemGroup>
+</Project>
