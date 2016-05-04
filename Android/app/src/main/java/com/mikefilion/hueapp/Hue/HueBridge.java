@@ -1,11 +1,13 @@
 package com.mikefilion.hueapp.Hue;
 
+import android.app.Activity;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.Toast;
 
 import com.mikefilion.hueapp.ObjectModel.HueRegistration;
 import com.mikefilion.hueapp.ObjectModel.HueResponse;
+import com.mikefilion.hueapp.ObjectModel.HueSystemInformation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,18 +19,19 @@ public class HueBridge {
 
     public UrlProvider Urls;
     public final String IP;
+    public HueSystemInformation info;
 
     private final String appname = "androidhueapp";
     private boolean IsAuthenticated = false;
 
-    public HueBridge(String ip, View view) {
+    public HueBridge(String ip, View view, Activity activity) {
         Urls = new UrlProvider(ip);
         IP = ip;
 
-        InitializeRouter(view);
+        InitializeRouter(view, activity);
     }
 
-    public boolean InitializeRouter(View view) {
+    public boolean InitializeRouter(View view, Activity activity) {
         String bridgeApiKey = Settings.GetDefault().GetBridgeApiKey();
         if (bridgeApiKey != null && !bridgeApiKey.isEmpty())
         {
@@ -39,7 +42,7 @@ public class HueBridge {
             }
         }
 
-        if(!Register(view)) {
+        if(!Register(view, activity)) {
             return false;
         }
 
@@ -55,18 +58,31 @@ public class HueBridge {
     }
 
     public void TryUpdateAllData() {
-        /*String url = Urls.GetStatusUrl();
-        String statusResponse = new HttpClient().GetStringAsync(url).Result;
+        try {
+            String url = Urls.GetStatusUrl();
+            String responseFromServer = CommUtilities.Get(url);
 
-        HueResponse hueResponse = JsonConvert.DeserializeObject<HueResponse>(statusResponse);
+            if (responseFromServer.startsWith("[")) {
+                responseFromServer = responseFromServer.substring(1);
+            }
 
-        if (hueResponse.error == null || hueResponse.error.type != 1)
-        {
-            info = new HueSystemInformation();
-            info.DeserializeJson(statusResponse);
+            if (responseFromServer.endsWith("]")) {
+                responseFromServer = responseFromServer.substring(0, responseFromServer.length() - 1);
+            }
 
-            IsAuthenticated = true;
-        }*/
+            JSONObject json = null;
+            json = new JSONObject(responseFromServer);
+            HueResponse hueResponse = new HueResponse(json);
+
+            if (hueResponse.error == null || hueResponse.error.type != 1) {
+                info = new HueSystemInformation();
+                info.DeserializeJson(json);
+
+                IsAuthenticated = true;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void TryUpdateAllRules() {
@@ -84,7 +100,7 @@ public class HueBridge {
         }*/
     }
 
-    private boolean Register(View view)  {
+    private boolean Register(View view, Activity activity)  {
         try {
             int retryCount = 0;
             final int retryMax = 60;
@@ -114,7 +130,9 @@ public class HueBridge {
                     if (retryCount == 0 /*&& PushButtonOnBridge != null*/)
                     {
                         //PushButtonOnBridge(this, null);
-                        Snackbar.make(view, "Link button not pressed", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        //Snackbar.make(view, "Link button not pressed", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        LinkButtonErrorNotification notification = new LinkButtonErrorNotification(view);
+                        notification.execute();
                     }
 
                     Thread.sleep(pauseMilliseconds); // sleep for a second, then retry
@@ -125,7 +143,7 @@ public class HueBridge {
                     Snackbar.make(view, "Bridge connected", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                     Settings.GetDefault().SetBridgeApiKey(hueResponse.success.username);
-                    Settings.GetDefault().Save();
+                    Settings.GetDefault().Save(activity);
 
                     IsAuthenticated = true;
                     return true;

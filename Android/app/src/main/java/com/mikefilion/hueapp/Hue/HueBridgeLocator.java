@@ -1,5 +1,6 @@
 package com.mikefilion.hueapp.Hue;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -16,17 +17,19 @@ import java.net.URL;
 
 public class HueBridgeLocator extends AsyncTask<Void, Void, HueBridge>{
     private final View mView;
+    private final Activity mActivity;
 
-    public HueBridgeLocator(View view) {
+    public HueBridgeLocator(View view, Activity activity) {
         this.mView = view;
+        this.mActivity = activity;
     }
 
-    public static HueBridge Locate(View view) {
+    public static HueBridge Locate(View view, Activity activity) {
         ConnectivityManager connMgr = (ConnectivityManager)view.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             try {
-                return new HueBridgeLocator(view).execute().get();
+                return new HueBridgeLocator(view, activity).execute().get();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -36,10 +39,10 @@ public class HueBridgeLocator extends AsyncTask<Void, Void, HueBridge>{
         }
 
         //https://www.meethue.com/api/nupnpx
-        return LocateWithApi(view);
+        return LocateWithApi(view, activity);
     }
 
-    public static HueBridge LocateWithApi(View view) {
+    public static HueBridge LocateWithApi(View view, Activity activity) {
         try {
             String content = CommUtilities.Get("https://www.meethue.com/api/nupnp");
             if(content.startsWith("[")) {
@@ -53,7 +56,7 @@ public class HueBridgeLocator extends AsyncTask<Void, Void, HueBridge>{
             JSONObject json = new JSONObject(content);
 
             HueBridgeInfo hueBridgeInfo = new HueBridgeInfo(json);
-            return new HueBridge(hueBridgeInfo.internalipaddress, view);
+            return new HueBridge(hueBridgeInfo.internalipaddress, view, activity);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -97,6 +100,6 @@ public class HueBridgeLocator extends AsyncTask<Void, Void, HueBridge>{
      */
     @Override
     protected HueBridge doInBackground(Void... params) {
-        return LocateWithApi(mView);
+        return LocateWithApi(mView, mActivity);
     }
 }

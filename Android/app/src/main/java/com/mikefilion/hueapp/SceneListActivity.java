@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.mikefilion.hueapp.Hue.HueBridge;
 import com.mikefilion.hueapp.Hue.HueBridgeLocator;
+import com.mikefilion.hueapp.Hue.Settings;
 import com.mikefilion.hueapp.dummy.ListContent;
 
 import java.util.List;
@@ -42,18 +43,14 @@ public class SceneListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scene_list);
+        Settings.Configure(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HueBridgeLocator.Locate(view);
-            }
-        });
+        fab.setOnClickListener(new FabClickListener(this));
 
         View recyclerView = findViewById(R.id.scene_list);
         assert recyclerView != null;

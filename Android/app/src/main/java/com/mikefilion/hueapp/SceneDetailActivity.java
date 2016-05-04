@@ -1,5 +1,6 @@
 package com.mikefilion.hueapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 
 import com.mikefilion.hueapp.Hue.HueBridge;
 import com.mikefilion.hueapp.Hue.HueBridgeLocator;
+import com.mikefilion.hueapp.Hue.Settings;
 
 /**
  * An activity representing a single Scene detail screen. This
@@ -28,14 +30,10 @@ public class SceneDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scene_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
+        Settings.Configure(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HueBridge bridge = HueBridgeLocator.Locate(view);
-            }
-        });
+        fab.setOnClickListener(new FabClickListener(this));
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
