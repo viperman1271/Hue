@@ -4,6 +4,9 @@
 #include "HttpClient.h"
 #include "Callbacks.h"
 
+//Static member initialization
+std::string HueBridge::appname = "winhueapp";
+
 bool HueBridge::InitializeRouter()
 {
     if (Settings::GetInstance()->GetBridgeApiKey().length() > 0)

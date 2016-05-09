@@ -8,8 +8,9 @@ class HueBridge
 public:
            
     HueBridge(const std::string& ip)
-        : IP(ip)
-        , Urls(ip)
+        : Urls(ip)
+	, IP(ip)
+	, IsAuthenticated(false)
     {
         InitializeRouter();
     }
@@ -34,6 +35,6 @@ public:
     HueSystemInformation info;
 
 private:
-    const std::string appname = "winhueapp";
-    bool IsAuthenticated = false;
+    const static std::string appname;// = "winhueapp";
+    bool IsAuthenticated;// = false;
 };
