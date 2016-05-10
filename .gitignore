@@ -37,6 +37,7 @@
 *.cache
 *.sdf
 *.suo
+*.opensdf
 
 # Folders to ignore
 Debug/
