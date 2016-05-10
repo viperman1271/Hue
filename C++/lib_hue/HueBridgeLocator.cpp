@@ -38,7 +38,7 @@ HueBridge* HueBridgeLocator::LocateWithApi()
 
     Json::Value root;
     Json::Reader reader;
-    bool parsingSuccessful = reader.parse(json, root);
+    reader.parse(json, root);
 
     HueBridgeInfo hueBridgeInfo(root);
     return new HueBridge(hueBridgeInfo.internalipaddress);

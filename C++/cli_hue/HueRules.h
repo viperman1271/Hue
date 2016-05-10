@@ -3,7 +3,7 @@
 #include <string>
 #include "HttpClient.h"
 
-#pragma optimize("", off)
+//#pragma optimize("", off)
 
 std::string replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
 {

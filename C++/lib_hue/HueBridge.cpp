@@ -4,8 +4,12 @@
 #include "HttpClient.h"
 #include "Callbacks.h"
 
+#ifdef LINUX
+#    include <unistd.h>
+#endif //LINUX
+
 //Static member initialization
-std::string HueBridge::appname = "winhueapp";
+const std::string HueBridge::appname = "winhueapp";
 
 bool HueBridge::InitializeRouter()
 {
@@ -28,7 +32,7 @@ void HueBridge::TryUpdateAllData()
 
     Json::Value root;
     Json::Reader reader;
-    bool parsingSuccessful = reader.parse(responseFromServer, root);
+    reader.parse(responseFromServer, root);
     HueResponse hueResponse(root);
 
     if (hueResponse.error.type == 0)
@@ -46,10 +50,10 @@ void HueBridge::TryUpdateAllRules()
 
     Json::Value root;
     Json::Reader reader;
-    bool parsingSuccessful = reader.parse(responseFromServer, root);
+    reader.parse(responseFromServer, root);
     HueResponse hueResponse(root);
 
-    if (hueResponse.error.type = 0)
+    if (hueResponse.error.type == 0)
     {
         info.DeserializeJson(root);
     }
@@ -74,7 +78,11 @@ void HueBridge::FlashLights()
         {
             SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
         }
+#ifdef LINUX
+        sleep(1000);
+#else
         Sleep(1000);
+#endif
         for(auto light : info.lights)
         {
             SetLightStatus(light.id, "{\"bri\": 0, \"on\": false }");
@@ -117,7 +125,7 @@ bool HueBridge::Register()
 
         Json::Value root;
         Json::Reader reader;
-        bool parsingSuccessful = reader.parse(responseFromServer, root);
+        reader.parse(responseFromServer, root);
         HueResponse hueResponse(root);
 
         if (hueResponse.error.type == 101)
@@ -128,7 +136,11 @@ bool HueBridge::Register()
                 libhue_callbacks::RegistationError(hueResponse.error.type);
             }
 
-            Sleep(1000);
+#ifdef LINUX
+            sleep(pauseMilliseconds);
+#else
+            Sleep(pauseMilliseconds);
+#endif
             ++retryCount;
         }
         else if (!hueResponse.success.username.empty())

@@ -1,4 +1,7 @@
 #include "HttpClient.h"
+#ifdef LINUX
+#	include <string.h>
+#endif
 
 HttpClient* HttpClient::ms_instance = nullptr;
 
@@ -72,7 +75,7 @@ std::string HttpClient::Get(const std::string& url)
 {
     CURL* curl = Config();
 
-    CURLcode res = curl_easy_setopt(curl, CURLOPT_URL, url);
+    CURLcode res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
         curl_easy_cleanup(curl);
@@ -116,7 +119,7 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
         return "";
     }
 
-    res = curl_easy_setopt(curl, CURLOPT_URL, url);
+    res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
         curl_easy_cleanup(curl);
@@ -160,7 +163,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
         return "";
     }
     
-    res = curl_easy_setopt(curl, CURLOPT_URL, url);
+    res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
         curl_easy_cleanup(curl);

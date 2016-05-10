@@ -1,4 +1,5 @@
 #!/bin/bash
 
 mkdir -p temp
+mkdir -p lib
 mkdir -p bin

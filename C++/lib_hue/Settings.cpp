@@ -4,6 +4,10 @@
 
 #include <fstream>
 
+#ifdef LINUX
+#	include <string.h>
+#endif
+
 Settings* Settings::ms_instance = nullptr;
 
 Settings* Settings::GetInstance()
