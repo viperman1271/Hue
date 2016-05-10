@@ -13,21 +13,6 @@ HueBridge* HueBridgeLocator::Locate()
 
 HueBridge* HueBridgeLocator::LocateAsync()
 {
-    /*if (UPnP.NAT.Discover())
-    {
-        var endpoints = UPnP.NAT.DiscoveredEndpoints
-            .Where(s = > s.EndsWith("/description.xml")).ToList();
-        foreach(var endpoint in endpoints)
-        {
-            if (await IsHue(endpoint))
-            {
-                var ip = endpoint.Replace("http://", "").Replace("/description.xml", "");
-                return new HueBridge(ip);
-            }
-        }
-        return null;
-    }
-    return null;*/
     return nullptr;
 }
 

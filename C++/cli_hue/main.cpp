@@ -15,8 +15,16 @@ namespace libhue_callbacks
     }
 }
 
+void ExceptionHandler()
+{
+    std::cerr << "Unhandled exception caught";
+    abort();
+}
+
 int main(int argc, char** argv)
 {
+    std::set_terminate(ExceptionHandler);
+
     HueBridge* bridge = HueBridgeLocator::Locate();
     if (argc > 1 && std::string(argv[1]) == std::string("-flash"))
     {
@@ -27,4 +35,4 @@ int main(int argc, char** argv)
         SwitchSceneForLight(bridge);
     }
     return 0;
-}
+};
