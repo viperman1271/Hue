@@ -42,6 +42,7 @@
 Debug/
 Release/
 Temp/
+cli_hue/bin/
 cli_hue/Debug/
 cli_hue/Release/
 Hue/obj/
