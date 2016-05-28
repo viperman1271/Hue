@@ -12,10 +12,11 @@ PROJECT_NAME=libHue
 EXEC=$(PROJECT_NAME).a
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
+SOURCES_OM=$(wildcard ObjectModel/*.cpp)
+OBJECTS_OM=$(SOURCES_OM:.cpp=.o)
 
 # Main target
-$(EXEC): $(OBJECTS)
-#	$(CC) $(OBJECTS)
+$(EXEC): $(OBJECTS) $(OBJECTS_OM)
 	ar ru $(LIB)/$@ $^
 	ranlib $(LIB)/$@
 
