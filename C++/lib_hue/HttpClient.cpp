@@ -2,6 +2,7 @@
 #ifdef LINUX
 #	include <string.h>
 #endif
+#include <iostream>
 
 HttpClient* HttpClient::ms_instance = nullptr;
 
@@ -31,6 +32,7 @@ CURL* HttpClient::Config()
     res = curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         return nullptr;
     }
 
@@ -38,6 +40,7 @@ CURL* HttpClient::Config()
     res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&m_memoryStruct);
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         return nullptr;
     }
 
@@ -46,6 +49,7 @@ CURL* HttpClient::Config()
     res = curl_easy_setopt(curl, CURLOPT_USERAGENT, "libcurl-agent/1.0");
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         return nullptr;
     }
 
@@ -78,13 +82,19 @@ std::string HttpClient::Get(const std::string& url)
     CURLcode res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
 
     res = curl_easy_perform(curl);
-
     curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK)
+    {
+	std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        return "";
+    }
 
     return m_memoryStruct.memory;
 }
@@ -101,6 +111,7 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
     CURLcode res = curl_easy_setopt(curl, CURLOPT_POST, 1L);
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -108,6 +119,7 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data.size());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -115,6 +127,7 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -122,6 +135,7 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -129,6 +143,12 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
     res = curl_easy_perform(curl);
 
     curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK)
+    {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        return "";
+    }
 
     return m_memoryStruct.memory;
 }
@@ -145,6 +165,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
     CURLcode res = curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "PUT");
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -152,6 +173,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -159,6 +181,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data.size());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -166,6 +189,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
     res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         curl_easy_cleanup(curl);
         return "";
     }
@@ -173,6 +197,12 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
     res = curl_easy_perform(curl);
 
     curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK)
+    {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        return "";
+    }
 
     return m_memoryStruct.memory;
 }

@@ -2,8 +2,14 @@
 #include "HueBridge.h"
 #include "ObjectModel/HueBridgeInfo.h"
 #include "HttpClient.h"
-
+#include <iostream>
 #include <curl/curl.h>
+
+#ifdef LINUX
+const char* s_pszAddress = "http://www.meethue.com/api/nupnp";
+#else
+const char* s_pszAddress = "https://www.meethue.com/api/nupnp";
+#endif
 
 HueBridge* HueBridgeLocator::Locate()
 {
@@ -19,7 +25,13 @@ HueBridge* HueBridgeLocator::LocateAsync()
 HueBridge* HueBridgeLocator::LocateWithApi()
 {
     HttpClient* client = HttpClient::GetInstance();
-    std::string json = client->Get("https://www.meethue.com/api/nupnp");
+
+    std::string json = client->Get(s_pszAddress);
+
+    if(json.empty())
+    {
+        return nullptr;
+    }
 
     Json::Value root;
     Json::Reader reader;

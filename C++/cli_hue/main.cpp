@@ -17,7 +17,7 @@ namespace libhue_callbacks
 
 void ExceptionHandler()
 {
-    std::cerr << "Unhandled exception caught";
+    std::cerr << "Unhandled exception caught" << std::endl;
     abort();
 }
 

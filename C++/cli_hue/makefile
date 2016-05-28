@@ -12,7 +12,7 @@ main.o: main.cpp
 	$(CC) $(COMPILER_OPTIONS) -c main.cpp -o ./$(TMP)/main.o $(INCLUDE_DIRS)
 
 run:
-	./main
+	./bin/hue
 
 install:
 
