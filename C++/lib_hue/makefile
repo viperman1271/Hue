@@ -4,7 +4,7 @@ TMP=temp
 LIB=lib
 BIN=bin
 CC_FLAGS=-w -O -Wall -g
-PREPROCESSOR=-DLINUX
+PREPROCESSOR=-DLINUX -DVERBOSE_OUTPUT
 INCLUDE_DIRS=-I./../lib_hue -I./../JsonCpp/include -I./../libcurl_src/include
 PROJECT_NAME=libHue
 

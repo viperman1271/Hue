@@ -8,6 +8,10 @@ HttpClient* HttpClient::ms_instance = nullptr;
 
 CURL* HttpClient::Config()
 {
+#ifdef VERBOSE_OUTPUT
+    std::cout << "HttpClient::Config" << std::endl;
+#endif
+
     CURLcode res;
 
     if (m_memoryStruct.size > 0)
@@ -24,9 +28,6 @@ CURL* HttpClient::Config()
 
     /* init the curl session */
     CURL* curl = curl_easy_init();
-
-    /* specify URL to get */
-    //res = curl_easy_setopt(curl, CURLOPT_URL, "https://www.meethue.com/api/nupnp");
 
     /* send all data to this function  */
     res = curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
@@ -58,6 +59,10 @@ CURL* HttpClient::Config()
 
 size_t HttpClient::WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
+#ifdef VERBOSE_OUTPUT
+    std::cout << "HttpClient::WriteMemoryCallback" << std::endl;
+#endif
+
     size_t realsize = size * nmemb;
     struct MemoryStruct *mem = (struct MemoryStruct *)userp;
 
@@ -77,6 +82,10 @@ size_t HttpClient::WriteMemoryCallback(void *contents, size_t size, size_t nmemb
 
 std::string HttpClient::Get(const std::string& url)
 {
+#ifdef VERBOSE_OUTPUT
+    std::cout << "HttpClient::Get" << std::endl;
+#endif
+
     CURL* curl = Config();
 
     CURLcode res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
@@ -92,7 +101,7 @@ std::string HttpClient::Get(const std::string& url)
 
     if (res != CURLE_OK)
     {
-	std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         return "";
     }
 
@@ -101,6 +110,10 @@ std::string HttpClient::Get(const std::string& url)
 
 std::string HttpClient::Post(const std::string& url, const std::string& data)
 {
+#ifdef VERBOSE_OUTPUT
+    std::cout << "HttpClient::Post" << std::endl;
+#endif
+
     CURL* curl = Config();
     if (!curl)
     {
@@ -155,6 +168,10 @@ std::string HttpClient::Post(const std::string& url, const std::string& data)
 
 std::string HttpClient::Put(const std::string& url, const std::string& data)
 {
+#ifdef VERBOSE_OUTPUT
+    std::cout << "HttpClient::Put" << std::endl;
+#endif
+
     CURL* curl = Config();
     if (!curl)
     {
@@ -185,7 +202,7 @@ std::string HttpClient::Put(const std::string& url, const std::string& data)
         curl_easy_cleanup(curl);
         return "";
     }
-    
+
     res = curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     if (res != CURLE_OK)
     {

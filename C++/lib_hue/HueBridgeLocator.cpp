@@ -30,8 +30,11 @@ HueBridge* HueBridgeLocator::LocateWithApi()
 
     if(json.empty())
     {
+        std::cerr << "HueBridgeLocator::LocateWithApi: Did not receive any json data" << std::endl;
         return nullptr;
     }
+
+    std::cout << "JSON:" << std::endl << json << std::endl;
 
     Json::Value root;
     Json::Reader reader;

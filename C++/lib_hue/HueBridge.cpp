@@ -3,7 +3,7 @@
 #include "ObjectModel/HueResponse.h"
 #include "HttpClient.h"
 #include "Callbacks.h"
-
+#include <iostream>
 #ifdef LINUX
 #    include <unistd.h>
 #endif //LINUX
@@ -72,10 +72,13 @@ void HueBridge::AlertAllLights()
 
 void HueBridge::FlashLights()
 {
+std::cout<<"HueBridge::FlashLights"<<std::endl;
     if (info.lights.size() > 0 && IsAuthenticated)
     {
+std::cout<<"HueBridge::FlashLights_1"<<std::endl;
         for(auto light : info.lights)
         {
+std::cout<<"HueBridge::FlashLights_2"<<std::endl;
             SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
         }
 #ifdef LINUX
@@ -85,6 +88,7 @@ void HueBridge::FlashLights()
 #endif
         for(auto light : info.lights)
         {
+std::cout<<"HueBridge::FlashLights_3"<<std::endl;
             SetLightStatus(light.id, "{\"bri\": 0, \"on\": false }");
         }
     }
