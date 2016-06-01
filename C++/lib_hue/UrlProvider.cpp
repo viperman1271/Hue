@@ -1,6 +1,7 @@
 #include "UrlProvider.h"
 
-UrlProvider::UrlProvider(const std::string& in_ip) : ip(in_ip)
+UrlProvider::UrlProvider(const std::string& in_ip) 
+: ip(in_ip)
 {
     if (ip.substr(0, 7) != "http://")
         ip = "http://" + ip;

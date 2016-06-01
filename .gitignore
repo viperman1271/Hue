@@ -56,3 +56,4 @@ lib_hue/temp/
 lib_hue/Win32/
 lib_hue/tempWin32/
 libcurl_src/builds/
+C++/Hue.VC.opendb
