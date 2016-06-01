@@ -1,0 +1,152 @@
+# depslib dependency file v1.0
+1464568140 source:/home/pi/programming/Hue/C++/cli_hue/main.cpp
+	"HueBridgeLocator.h"
+	"HueBridge.h"
+	"curl/curl.h"
+	<iostream>
+	"HueRules.h"
+
+1464392381 /home/pi/programming/Hue/C++/lib_hue/HueBridgeLocator.h
+
+1464392381 /home/pi/programming/Hue/C++/lib_hue/HueBridge.h
+	"UrlProvider.h"
+	"ObjectModel/HueSystemInformation.h"
+
+1464392381 /home/pi/programming/Hue/C++/lib_hue/UrlProvider.h
+	"Settings.h"
+
+1464392381 /home/pi/programming/Hue/C++/lib_hue/Settings.h
+	<string>
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueSystemInformation.h
+	"HueLightInformation.h"
+	"HueGroupInformation.h"
+	"HueSceneInformation.h"
+	"HueRuleInformation.h"
+	"HueSensorInformation.h"
+	"HueConfigInformation.h"
+	"json/reader.h"
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueLightInformation.h
+	"HueLightState.h"
+	"json/reader.h"
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueLightState.h
+	"json/reader.h"
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/reader.h
+	"features.h"
+	"value.h"
+	<deque>
+	<iosfwd>
+	<stack>
+	<string>
+	<istream>
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/features.h
+	"forwards.h"
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/forwards.h
+	"config.h"
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/config.h
+	<stddef.h>
+	<string>
+	<cpptl/config.h>
+	"version.h"
+	"allocator.h"
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/version.h
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/allocator.h
+	<cstring>
+	<memory>
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/value.h
+	"forwards.h"
+	<string>
+	<vector>
+	<exception>
+	<map>
+	<cpptl/smallmap.h>
+	<cpptl/forwards.h>
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueGroupInformation.h
+	<vector>
+	"HueGroupActionInfo.h"
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueGroupActionInfo.h
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueSceneInformation.h
+	<vector>
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueRuleInformation.h
+	"HueRuleAction.h"
+	"json/writer.h"
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueRuleAction.h
+
+1462764936 /home/pi/programming/Hue/C++/JsonCpp/include/json/writer.h
+	"value.h"
+	<vector>
+	<string>
+	<ostream>
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueSensorInformation.h
+	"HueSensorStateInfo.h"
+	"HueSensorConfigInfo.h"
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueSensorStateInfo.h
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueSensorConfigInfo.h
+
+1462764936 /home/pi/programming/Hue/C++/lib_hue/ObjectModel/HueConfigInformation.h
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/curl.h
+	"curlver.h"
+	"curlbuild.h"
+	"curlrules.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"typecheck-gcc.h"
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/curlver.h
+
+1462843731 /home/pi/programming/Hue/C++/libcurl_src/include/curl/curlbuild.h
+	<windows.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<stdint.h>
+	<inttypes.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/curlrules.h
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/easy.h
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/multi.h
+	"curl.h"
+
+1462764937 /home/pi/programming/Hue/C++/libcurl_src/include/curl/typecheck-gcc.h
+
+1462798074 /home/pi/programming/Hue/C++/cli_hue/HueRules.h
+	<string>
+	"HttpClient.h"
+
+1464392381 /home/pi/programming/Hue/C++/lib_hue/HttpClient.h
+	<curl/curl.h>
+	<string>
+
