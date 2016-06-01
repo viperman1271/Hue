@@ -1,6 +1,10 @@
 ﻿#include <string>
 #include "HueLightState.h"
-#include "json/reader.h"
+#ifdef LINUX_VS
+#	include "../../lib_json_linux/include/json/reader.h"
+#else
+#	include "json/reader.h"
+#endif
 
 struct HueLightInformation
 {

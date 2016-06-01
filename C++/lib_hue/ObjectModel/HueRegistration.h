@@ -1,5 +1,9 @@
 ﻿#include <string>
-#include "json/writer.h"
+#ifdef LINUX_VS
+#	include "../../lib_json_linux/include/json/writer.h"
+#else
+#	include "json/writer.h"
+#endif
 
 struct HueRegistration
 {

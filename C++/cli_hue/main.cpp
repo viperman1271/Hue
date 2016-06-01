@@ -1,8 +1,14 @@
-#include "HueBridgeLocator.h"
-#include "HueBridge.h"
-#include "curl/curl.h"
-#include <iostream>
+#ifdef LINUX_VS
+#	include "../lib_hue_linux/HueBridgeLocator.h"
+#	include "../lib_hue_linux/HueBridge.h"
+#	include "../lib_curl_linux/include/curl/curl.h"
+#else
+#	include "HueBridgeLocator.h"
+#	include "HueBridge.h"
+#	include "curl/curl.h"
+#endif
 #include "HueRules.h"
+#include <iostream>
 
 namespace libhue_callbacks
 {

@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CA160A76-8941-4148-B676-556DED7CC35F}</ProjectGuid>
     <RootNamespace>lib_hue</RootNamespace>
-    <ProjectName>libhue</ProjectName>
+    <ProjectName>lib_hue_win32</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

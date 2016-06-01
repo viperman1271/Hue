@@ -4,7 +4,11 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-#include <json/writer.h>
+#ifdef LINUX_VS
+#	include "../../include/json/writer.h"
+#else
+#	include <json/writer.h>
+#endif
 #include "json_tool.h"
 #endif // if !defined(JSON_IS_AMALGAMATION)
 #include <iomanip>
