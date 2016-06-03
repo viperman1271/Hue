@@ -4,7 +4,7 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-#ifdef LINUX_VS
+#if defined(LINUX_VS) || defined(LINUX_VS_UNIFIED)
 #	include "../../include/json/writer.h"
 #else
 #	include <json/writer.h>

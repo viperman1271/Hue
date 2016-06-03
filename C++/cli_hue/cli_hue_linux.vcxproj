@@ -80,49 +80,67 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
+      <ShowIncludes>true</ShowIncludes>
+      <AdditionalIncludeDirectories>~/projects/lib_hue_linux/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
+      <AdditionalOptions>-lz -lrt -llib_hue_linux.a -llib_json_linux.a %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>
+      </LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
+      <Verbose>true</Verbose>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <VerboseOutput>true</VerboseOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

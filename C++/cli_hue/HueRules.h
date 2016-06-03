@@ -4,6 +4,8 @@
 
 #ifdef LINUX_VS
 #	include "../lib_hue_linux/HttpClient.h"
+#elif LINUX_VS_UNIFIED
+#	include "../lib_hue/HttpClient.h"
 #else
 #	include "HttpClient.h"
 #endif
