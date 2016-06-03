@@ -1,4 +1,6 @@
 #include "HueBridge.h"
+#include "ObjectModel/HueError.h"
+#include "ObjectModel/HueUserInfo.h"
 #include "ObjectModel/HueRegistration.h"
 #include "ObjectModel/HueResponse.h"
 #include "HttpClient.h"

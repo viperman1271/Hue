@@ -1,7 +1,13 @@
 ﻿#include <string>
 
 #include "HueRuleAction.h"
-#include "json/writer.h"
+#ifdef LINUX_VS
+#	include "../../lib_json_linux/include/json/writer.h"
+#elif LINUX_VS_UNIFIED
+#	include "../../JsonCpp/include/json/writer.h"
+#else
+#	include "json/writer.h"
+#endif
 
 struct HueRuleInformation
 {

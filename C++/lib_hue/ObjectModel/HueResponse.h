@@ -1,7 +1,4 @@
-﻿#include "ObjectModel/HueError.h"
-#include "ObjectModel/HueUserInfo.h"
-
-struct HueResponse
+﻿struct HueResponse
 {
     HueError error;
     HueUserInfo success;

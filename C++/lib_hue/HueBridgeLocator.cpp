@@ -3,7 +3,13 @@
 #include "ObjectModel/HueBridgeInfo.h"
 #include "HttpClient.h"
 #include <iostream>
-#include <curl/curl.h>
+#ifdef LINUX_VS
+#	include "../lib_curl_linux/include/curl/curl.h"
+#elif LINUX_VS_UNIFIED
+#	include "../libcurl_src/include/curl/curl.h"
+#else
+#	include <curl/curl.h>
+#endif
 
 #ifdef LINUX
 const char* s_pszAddress = "http://www.meethue.com/api/nupnp";
