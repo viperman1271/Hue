@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;./include;$(RemoteProjectDir)/include;$(RemoteRootDir)/$(ProjectName)/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <AdditionalOptions>-I./include -I~/projects/lib_json_linux/include %(AdditionalOptions)</AdditionalOptions>

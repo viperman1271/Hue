@@ -6,6 +6,8 @@
 
 HttpClient* HttpClient::ms_instance = nullptr;
 
+char* fp;
+
 CURL* HttpClient::Config()
 {
 #ifdef VERBOSE_OUTPUT
@@ -36,6 +38,13 @@ CURL* HttpClient::Config()
         std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
         return nullptr;
     }
+
+	res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+	if (res != CURLE_OK)
+	{
+		std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+		return nullptr;
+	}
 
     /* we pass our 'chunk' struct to the callback function */
     res = curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&m_memoryStruct);

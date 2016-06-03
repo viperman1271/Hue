@@ -10,9 +10,8 @@
 #else
 #	include <curl/curl.h>
 #endif
-
 #ifdef LINUX
-const char* s_pszAddress = "http://www.meethue.com/api/nupnp";
+const char* s_pszAddress = "www.meethue.com/api/nupnp";
 #else
 const char* s_pszAddress = "https://www.meethue.com/api/nupnp";
 #endif

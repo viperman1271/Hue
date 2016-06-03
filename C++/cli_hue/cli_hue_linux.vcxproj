@@ -82,15 +82,16 @@
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <ShowIncludes>true</ShowIncludes>
-      <AdditionalIncludeDirectories>~/projects/lib_hue_linux/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_hue_linux/;/home/pi/projects/lib_curl_linux/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalOptions>-lz -lrt -llib_hue_linux.a -llib_json_linux.a %(AdditionalOptions)</AdditionalOptions>
-      <LibraryDependencies>
-      </LibraryDependencies>
+      <AdditionalOptions>-lz -lrt %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>lib_hue_linux;curl;jsoncpp</LibraryDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/lib_hue_linux/bin/ARM/Debug/;/home/pi/projects/lib_json_linux/lib;/home/pi/projects/lib_curl_linux/lib/ARM;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
