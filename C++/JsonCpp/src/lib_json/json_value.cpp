@@ -4,16 +4,10 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-#if defined(LINUX_VS) || defined(LINUX_VS_UNIFIED)
-#	include "../../include/json/assertions.h"
-#	include "../../include/json/value.h"
-#	include "../../include/json/writer.h"
-#else
-#	include <json/assertions.h>
-#	include <json/value.h>
-#	include <json/writer.h>
+#include <json/assertions.h>
+#include <json/value.h>
+#include <json/writer.h>
 #endif
-#endif // if !defined(JSON_IS_AMALGAMATION)
 #include <math.h>
 #include <sstream>
 #include <utility>

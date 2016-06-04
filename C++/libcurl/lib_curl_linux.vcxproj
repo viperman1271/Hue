@@ -28,124 +28,64 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Callbacks.h" />
-    <ClInclude Include="HttpClient.h" />
-    <ClInclude Include="HueBridge.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="HueBridgeLocator.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueBridgeInfo.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueConfigInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueError.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueGroupActionInfo.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueGroupInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueLightInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueLightState.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueRegistration.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueResponse.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueRuleAction.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueRuleActionBody.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueRuleInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueSceneInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueSensorConfigInfo.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueSensorInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueSensorStateInfo.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueSystemInformation.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="ObjectModel\HueUserInfo.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
-    <ClInclude Include="Settings.h" />
-    <ClInclude Include="UrlProvider.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
+    <ClInclude Include="include\curl\curl.h" />
+    <ClInclude Include="include\curl\curlbuild.h" />
+    <ClInclude Include="include\curl\curlrules.h" />
+    <ClInclude Include="include\curl\curlver.h" />
+    <ClInclude Include="include\curl\easy.h" />
+    <ClInclude Include="include\curl\mprintf.h" />
+    <ClInclude Include="include\curl\multi.h" />
+    <ClInclude Include="include\curl\stdcheaders.h" />
+    <ClInclude Include="include\curl\typecheck-gcc.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HttpClient.cpp" />
-    <ClCompile Include="HueBridge.cpp" />
-    <ClCompile Include="HueBridgeLocator.cpp" />
-    <ClCompile Include="ObjectModel\HueSystemInformation.cpp" />
-    <ClCompile Include="Settings.cpp" />
-    <ClCompile Include="UrlProvider.cpp" />
+    <ClCompile Include="libcurl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="lib\ARM\libcurl.a">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</DeploymentContent>
+      <FileType>Document</FileType>
+    </Resource>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{b0d59875-e14d-44e3-b4e8-6c6acc103fc4}</ProjectGuid>
+    <ProjectGuid>{5ae54d7f-f9b1-40ff-9c11-22b43e201833}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>libhue_linux</RootNamespace>
+    <RootNamespace>lib_curl_linux</RootNamespace>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <ProjectName>lib_curl_linux</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -154,23 +94,23 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />

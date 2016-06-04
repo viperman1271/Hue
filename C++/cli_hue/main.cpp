@@ -1,19 +1,10 @@
-#ifdef LINUX_VS
-#	include "../lib_hue_linux/HueBridgeLocator.h"
-#	include "../lib_hue_linux/HueBridge.h"
-#	include "../lib_curl_linux/include/curl/curl.h"
-#elif LINUX_VS_UNIFIED
-#	include "../lib_hue/HueBridgeLocator.h"
-#	include "../lib_hue/HueBridge.h"
-#	include "../libcurl_src/include/curl/curl.h"
-#else
-#	include "HueBridgeLocator.h"
-#	include "HueBridge.h"
-#	include "curl/curl.h"
-#endif
+#include "HueBridgeLocator.h"
+#include "HueBridge.h"
+#include "curl/curl.h"
+
 #include "HueRules.h"
 #include <iostream>
-
+#include <string.h>
 namespace libhue_callbacks
 {
     void RegistationError(int error)

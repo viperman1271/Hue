@@ -4,15 +4,9 @@
 // See file LICENSE for detail or copy at http://jsoncpp.sourceforge.net/LICENSE
 
 #if !defined(JSON_IS_AMALGAMATION)
-#if defined(LINUX_VS) || defined(LINUX_VS_UNIFIED)
-#	include "../../include/json/assertions.h"
-#	include "../../include/json/reader.h"
-#	include "../../include/json/value.h"
-#else
-#	include <json/assertions.h>
-#	include <json/reader.h>
-#	include <json/value.h>
-#endif
+#include <json/assertions.h>
+#include <json/reader.h>
+#include <json/value.h>
 #include "json_tool.h"
 #endif // if !defined(JSON_IS_AMALGAMATION)
 #include <utility>
@@ -101,7 +95,6 @@ Reader::Reader(const Features& features)
     : errors_(), document_(), begin_(), end_(), current_(), lastValueEnd_(),
       lastValue_(), commentsBefore_(), features_(features), collectComments_() {
 }
-
 bool
 Reader::parse(const std::string& document, Value& root, bool collectComments) {
   JSONCPP_STRING documentCopy(document.data(), document.data() + document.capacity());
