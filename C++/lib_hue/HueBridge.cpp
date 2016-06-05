@@ -5,6 +5,7 @@
 #include "ObjectModel/HueResponse.h"
 #include "HttpClient.h"
 #include "Callbacks.h"
+#include "Platform.h"
 #include <iostream>
 #ifdef LINUX
 #    include <unistd.h>
@@ -88,11 +89,9 @@ void HueBridge::FlashLights()
         {
             SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
         }
-#ifdef LINUX
-        sleep(1000);
-#else
-        Sleep(1000);
-#endif
+
+		HUEPLATFORM::SLEEP(1000);
+
         for(auto light : info.lights)
         {
             SetLightStatus(light.id, "{\"bri\": 0, \"on\": false }");
@@ -146,11 +145,7 @@ bool HueBridge::Register()
                 libhue_callbacks::RegistationError(hueResponse.error.type);
             }
 
-#ifdef LINUX
-            sleep(pauseMilliseconds);
-#else
-            Sleep(pauseMilliseconds);
-#endif
+			HUEPLATFORM::SLEEP(pauseMilliseconds);
             ++retryCount;
         }
         else if (!hueResponse.success.username.empty())

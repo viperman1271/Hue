@@ -76,5 +76,6 @@
     <ClInclude Include="HueBridgeLocator.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="UrlProvider.h" />
+    <ClInclude Include="Platform.h" />
   </ItemGroup>
 </Project>
