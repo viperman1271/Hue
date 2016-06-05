@@ -8,8 +8,6 @@
 #	include "HttpClient.h"
 #endif
 
-//#pragma optimize("", off)
-
 std::string replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
 {
     return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
