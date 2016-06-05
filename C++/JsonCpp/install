@@ -1,0 +1,2 @@
+cp -r include/json /usr/include/json
+cp build/release/libjsoncpp.a /usr/lib/libjsoncpp.a
