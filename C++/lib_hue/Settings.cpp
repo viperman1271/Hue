@@ -33,7 +33,11 @@ Settings::Settings()
 void Settings::Load()
 {
     std::ifstream file;
+#ifdef LINUX
+	file.open("/etc/hueappinfo.json");
+#else
     file.open("hueappinfo.json");
+#endif
     if (file.is_open())
     {
         char dataBuffer[4096];
@@ -54,7 +58,11 @@ void Settings::Load()
 void Settings::Save()
 {
     std::ofstream file;
-    file.open("hueappinfo.json");
+#ifdef LINUX
+	file.open("/etc/hueappinfo.json");
+#else
+	file.open("hueappinfo.json");
+#endif
     if (file.is_open())
     {
         Json::FastWriter writer;

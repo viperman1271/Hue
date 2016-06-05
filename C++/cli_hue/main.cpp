@@ -2,6 +2,7 @@
 #include "HueBridge.h"
 #include "curl/curl.h"
 
+#include "CommandLineArguments.h"
 #include "HueRules.h"
 #include <iostream>
 #include <string.h>
@@ -27,27 +28,39 @@ int main(int argc, char** argv)
 {
     std::set_terminate(ExceptionHandler);
 
+	CommandLineArguments cmdArgs;
+	cmdArgs.Parse(argc, argv);
+
     HueBridge* bridge = HueBridgeLocator::Locate();
     if(!bridge)
     {
         return -1;
     }
 
-    if (argc > 1 && std::string(argv[1]) == std::string("-flash"))
-    {
-        bridge->FlashLights();
-    }
-    else if (argc > 1 && std::string(argv[1]) == std::string("-switch_bathroom"))
-    {
-        SwitchSceneForLight(bridge);
-    }
-	else if (argc > 1 && std::string(argv[1]) == std::string("-set_bathroom_night"))
+	for (CommandLineArguments::ACTIONS action : cmdArgs.GetActions())
 	{
-		SetBathroomSceneForNight(bridge);
+		switch (action)
+		{
+		case CommandLineArguments::FLASH:
+			bridge->FlashLights();
+			break;
+
+		case CommandLineArguments::SWITCH_BATHROOM:
+			SwitchSceneForLight(bridge);
+			break;
+
+		case CommandLineArguments::SET_BATHROOM_DAY:
+			SetBathroomSceneForDay(bridge);
+			break;
+
+		case CommandLineArguments::SET_BATHROOM_NIGHT:
+			SetBathroomSceneForNight(bridge);
+			break;
+
+		default:
+			continue;
+		}
 	}
-	else if (argc > 1 && std::string(argv[1]) == std::string("-set_bathroom_day"))
-	{
-		SetBathroomSceneForDay(bridge);
-	}
+
     return 0;
 }
