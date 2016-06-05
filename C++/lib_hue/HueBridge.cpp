@@ -11,7 +11,11 @@
 #endif //LINUX
 
 //Static member initialization
+#ifdef LINUX
+const std::string HueBridge::appname = "linuxhueapp";
+#else
 const std::string HueBridge::appname = "winhueapp";
+#endif
 
 bool HueBridge::InitializeRouter()
 {
@@ -74,13 +78,14 @@ void HueBridge::AlertAllLights()
 
 void HueBridge::FlashLights()
 {
-std::cout<<"HueBridge::FlashLights"<<std::endl;
+#ifdef VERBOSE_OUTPUT
+	std::cout<<"HueBridge::FlashLights"<<std::endl;
+#endif
+
     if (info.lights.size() > 0 && IsAuthenticated)
     {
-std::cout<<"HueBridge::FlashLights_1"<<std::endl;
         for(auto light : info.lights)
         {
-std::cout<<"HueBridge::FlashLights_2"<<std::endl;
             SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
         }
 #ifdef LINUX
@@ -90,7 +95,6 @@ std::cout<<"HueBridge::FlashLights_2"<<std::endl;
 #endif
         for(auto light : info.lights)
         {
-std::cout<<"HueBridge::FlashLights_3"<<std::endl;
             SetLightStatus(light.id, "{\"bri\": 0, \"on\": false }");
         }
     }
