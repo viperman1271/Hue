@@ -1,8 +1,8 @@
 #include "HttpClient.h"
+#include <iostream>
 #ifdef LINUX
 #	include <string.h>
 #endif
-#include <iostream>
 
 HttpClient* HttpClient::ms_instance = nullptr;
 

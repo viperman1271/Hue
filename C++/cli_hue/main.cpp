@@ -1,6 +1,6 @@
 #include "HueBridgeLocator.h"
 #include "HueBridge.h"
-#include "curl/curl.h"
+#include <curl/curl.h>
 
 #include "CommandLineArguments.h"
 #include "HueRules.h"

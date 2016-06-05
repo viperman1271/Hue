@@ -1,9 +1,4 @@
-#ifdef LINUX_VS
-#	include "../lib_curl_linux/include/curl/curl.h"
-#else
-#	include <curl/curl.h>
-#endif
-
+#include <curl/curl.h>
 #include <string>
 
 class HttpClient

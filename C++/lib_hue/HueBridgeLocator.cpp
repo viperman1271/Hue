@@ -3,11 +3,8 @@
 #include "ObjectModel/HueBridgeInfo.h"
 #include "HttpClient.h"
 #include <iostream>
-#ifdef LINUX_VS
-#	include "../lib_curl_linux/include/curl/curl.h"
-#else
-#	include <curl/curl.h>
-#endif
+#include <curl/curl.h>
+
 const char* s_pszAddress = "https://www.meethue.com/api/nupnp";
 
 HueBridge* HueBridgeLocator::Locate()

@@ -1,10 +1,6 @@
 ﻿#include <string>
 
-#if defined(LINUX_VS)
-#	include "../../lib_json_linux/include/json/reader.h"
-#else
-#	include "json/reader.h"
-#endif
+#include <json/reader.h>
 
 struct HueLightState
 {

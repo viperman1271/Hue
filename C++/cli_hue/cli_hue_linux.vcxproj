@@ -82,7 +82,7 @@
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <ShowIncludes>true</ShowIncludes>
-      <AdditionalIncludeDirectories>/home/pi/projects/lib_hue_linux/;/home/pi/projects/lib_curl_linux/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_hue_linux/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>

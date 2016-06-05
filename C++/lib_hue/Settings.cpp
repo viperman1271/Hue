@@ -1,12 +1,7 @@
 #include "Settings.h"
 
-#ifdef LINUX_VS
-#	include "../lib_json_linux/include/json/reader.h"
-#	include "../lib_json_linux/include/json/writer.h"
-#else
-#	include "json/reader.h"
-#	include "json/writer.h"
-#endif
+#include <json/reader.h>
+#include <json/writer.h>
 
 #include <fstream>
 

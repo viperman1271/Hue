@@ -2,11 +2,7 @@
 
 #include <string>
 
-#ifdef LINUX_VS
-#	include "../lib_hue_linux/HttpClient.h"
-#else
-#	include "HttpClient.h"
-#endif
+#include "HttpClient.h"
 
 std::string replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
 {
