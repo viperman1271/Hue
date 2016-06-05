@@ -41,5 +41,13 @@ int main(int argc, char** argv)
     {
         SwitchSceneForLight(bridge);
     }
+	else if (argc > 1 && std::string(argv[1]) == std::string("-set_bathroom_night"))
+	{
+		SetBathroomSceneForNight(bridge);
+	}
+	else if (argc > 1 && std::string(argv[1]) == std::string("-set_bathroom_day"))
+	{
+		SetBathroomSceneForDay(bridge);
+	}
     return 0;
 }

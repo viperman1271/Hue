@@ -26,28 +26,40 @@ void SwitchScene(HueBridge* bridge, HueRuleInformation rule, HueSceneInformation
     std::string statusResponse = HttpClient::GetInstance()->Put(url, serializedData);
 }
 
+bool FillSceneInformation(HueBridge* bridge, HueSceneInformation** sceneDay, HueSceneInformation** sceneNight)
+{
+	if (sceneDay == nullptr || sceneNight == nullptr)
+		return false;
+
+	//Find the scenes
+	for (HueSceneInformation& scene : bridge->info.scenes)
+	{
+		if (scene.id == "324e97cf0-on-0") //Bathroom - Daytime
+		{
+			*sceneDay = &scene;
+		}
+		else if (scene.id == "b7fe67faf-on-0") //Bathroom - Night
+		{
+			*sceneNight = &scene;
+		}
+
+		if (*sceneDay && *sceneNight)
+			break;
+	}
+
+	if (*sceneDay == nullptr || *sceneNight == nullptr)
+		return false;
+
+	return true;
+}
+
 void SwitchSceneForLight(HueBridge* bridge)
 {
     //Find the scene
     HueSceneInformation* sceneDay = nullptr;
     HueSceneInformation* sceneNight = nullptr;
-    for (HueSceneInformation& scene : bridge->info.scenes)
-    {
-        if (scene.id == "324e97cf0-on-0") //Bathroom - Daytime
-        {
-            sceneDay = &scene;
-        }
-        else if (scene.id == "b7fe67faf-on-0") //Bathroom - Night
-        {
-            sceneNight = &scene;
-        }
-
-        if (sceneDay && sceneNight)
-            break;
-    }
-
-    if (sceneDay == nullptr || sceneNight == nullptr)
-        return;
+	if (!FillSceneInformation(bridge, &sceneDay, &sceneNight))
+		return;
 
     for(const HueRuleInformation& rule : bridge->info.rules)
     {
@@ -62,4 +74,40 @@ void SwitchSceneForLight(HueBridge* bridge)
             break;
         }
     }
+}
+
+void SetBathroomSceneForNight(HueBridge* bridge)
+{
+	//Find the scene
+	HueSceneInformation* sceneDay = nullptr;
+	HueSceneInformation* sceneNight = nullptr;
+	if (!FillSceneInformation(bridge, &sceneDay, &sceneNight))
+		return;
+
+	for (const HueRuleInformation& rule : bridge->info.rules)
+	{
+		if (rule.actions[0].body.scene == sceneDay->id)
+		{
+			SwitchScene(bridge, rule, sceneDay, sceneNight);
+			break;
+		}
+	}
+}
+
+void SetBathroomSceneForDay(HueBridge* bridge)
+{
+	//Find the scene
+	HueSceneInformation* sceneDay = nullptr;
+	HueSceneInformation* sceneNight = nullptr;
+	if (!FillSceneInformation(bridge, &sceneDay, &sceneNight))
+		return;
+
+	for (const HueRuleInformation& rule : bridge->info.rules)
+	{
+		if (rule.actions[0].body.scene == sceneNight->id)
+		{
+			SwitchScene(bridge, rule, sceneNight, sceneDay);
+			break;
+		}
+	}
 }
