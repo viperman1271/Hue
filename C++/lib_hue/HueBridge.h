@@ -35,6 +35,6 @@ public:
     HueSystemInformation info;
 
 private:
-    const static std::string appname;// = "winhueapp";
-    bool IsAuthenticated;// = false;
+    const static std::string appname;
+    bool IsAuthenticated;
 };

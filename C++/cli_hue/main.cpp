@@ -5,6 +5,7 @@
 #include "HueRules.h"
 #include <iostream>
 #include <string.h>
+
 namespace libhue_callbacks
 {
     void RegistationError(int error)
@@ -41,4 +42,4 @@ int main(int argc, char** argv)
         SwitchSceneForLight(bridge);
     }
     return 0;
-};
+}

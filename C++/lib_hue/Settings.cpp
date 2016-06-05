@@ -3,9 +3,6 @@
 #ifdef LINUX_VS
 #	include "../lib_json_linux/include/json/reader.h"
 #	include "../lib_json_linux/include/json/writer.h"
-#elif LINUX_VS_UNIFIED
-#	include "../JsonCpp/include/json/reader.h"
-#	include "../JsonCpp/include/json/writer.h"
 #else
 #	include "json/reader.h"
 #	include "json/writer.h"

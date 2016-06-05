@@ -5,16 +5,10 @@
 #include <iostream>
 #ifdef LINUX_VS
 #	include "../lib_curl_linux/include/curl/curl.h"
-#elif LINUX_VS_UNIFIED
-#	include "../libcurl_src/include/curl/curl.h"
 #else
 #	include <curl/curl.h>
 #endif
-#ifdef LINUX
-const char* s_pszAddress = "www.meethue.com/api/nupnp";
-#else
 const char* s_pszAddress = "https://www.meethue.com/api/nupnp";
-#endif
 
 HueBridge* HueBridgeLocator::Locate()
 {
@@ -39,7 +33,9 @@ HueBridge* HueBridgeLocator::LocateWithApi()
         return nullptr;
     }
 
+#ifdef VERBOSE_OUTPUT
     std::cout << "JSON:" << std::endl << json << std::endl;
+#endif // VERBOSE_OUTPUT
 
     Json::Value root;
     Json::Reader reader;

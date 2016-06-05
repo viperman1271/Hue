@@ -8,8 +8,6 @@
 
 #ifdef LINUX_VS
 #	include "../../lib_json_linux/include/json/reader.h"
-#elif LINUX_VS_UNIFIED
-#	include "../../JsonCpp/include/json/reader.h"
 #else
 #	include "json/reader.h"
 #endif
