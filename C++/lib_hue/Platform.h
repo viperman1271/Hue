@@ -1,7 +1,9 @@
 #pragma once
 
 #include <time.h>
+#ifdef LINUX
 #include <unistd.h>
+#endif // LINUX
 
 namespace HUEPLATFORM
 {

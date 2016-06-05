@@ -34,6 +34,7 @@
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <ProjectName>hue</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -61,87 +62,112 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <TargetExt />
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <ShowIncludes>true</ShowIncludes>
-      <AdditionalIncludeDirectories>/home/pi/projects/lib_hue_linux/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
       <AdditionalOptions>-lz -lrt %(AdditionalOptions)</AdditionalOptions>
-      <LibraryDependencies>lib_hue_linux;jsoncpp;curl</LibraryDependencies>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>/home/pi/projects/lib_hue_linux/bin/ARM/Debug/;/home/pi/projects/lib_json_linux/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <IgnoreSpecificDefaultLibraries>lib_hue_linux.a;lib_json_linux.a</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -47,8 +47,6 @@
     <ClCompile Include="libcurl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\ARM\libcurl.a">
-      <Filter>lib\ARM</Filter>
-    </Library>
+    <Resource Include="lib\ARM\libcurl.a" />
   </ItemGroup>
 </Project>
