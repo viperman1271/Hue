@@ -5,6 +5,7 @@ class Command
 public:
 	Command(const std::string& argName)
 		: m_bridge(nullptr)
+		, m_shouldExecute(false)
 		, m_argumentName("-" + argName)
 	{
 
