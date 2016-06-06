@@ -1,4 +1,6 @@
-﻿#include <vector>
+﻿#pragma once
+
+#include <vector>
 #include "HueLightInformation.h"
 #include "HueGroupInformation.h"
 #include "HueSceneInformation.h"

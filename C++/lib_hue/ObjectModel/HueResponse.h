@@ -1,4 +1,6 @@
-﻿struct HueResponse
+﻿#pragma once
+
+struct HueResponse
 {
     HueError error;
     HueUserInfo success;

@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 {
     std::set_terminate(ExceptionHandler);
 
-	CommandLineArguments cmdArgs;
+	CommandLineCommands cmdArgs;
 	cmdArgs.Parse(argc, argv);
 
     HueBridge* bridge = HueBridgeLocator::Locate();
@@ -37,30 +37,33 @@ int main(int argc, char** argv)
         return -1;
     }
 
-	for (CommandLineArguments::ACTIONS action : cmdArgs.GetActions())
-	{
-		switch (action)
-		{
-		case CommandLineArguments::FLASH:
-			bridge->FlashLights();
-			break;
+	cmdArgs.SetBridge(bridge);
+	cmdArgs.Execute();
 
-		case CommandLineArguments::SWITCH_BATHROOM:
-			SwitchSceneForLight(bridge);
-			break;
-
-		case CommandLineArguments::SET_BATHROOM_DAY:
-			SetBathroomSceneForDay(bridge);
-			break;
-
-		case CommandLineArguments::SET_BATHROOM_NIGHT:
-			SetBathroomSceneForNight(bridge);
-			break;
-
-		default:
-			continue;
-		}
-	}
+// 	for (CommandLineCommands::ACTIONS action : cmdArgs.GetActions())
+// 	{
+// 		switch (action)
+// 		{
+// 		case CommandLineCommands::FLASH:
+// 			bridge->FlashLights();
+// 			break;
+// 
+// 		case CommandLineCommands::SWITCH_BATHROOM:
+// 			SwitchSceneForLight(bridge);
+// 			break;
+// 
+// 		case CommandLineCommands::SET_BATHROOM_DAY:
+// 			SetBathroomSceneForDay(bridge);
+// 			break;
+// 
+// 		case CommandLineCommands::SET_BATHROOM_NIGHT:
+// 			SetBathroomSceneForNight(bridge);
+// 			break;
+// 
+// 		default:
+// 			continue;
+// 		}
+// 	}
 
     return 0;
 }

@@ -1,4 +1,6 @@
-﻿#include <string>
+﻿#pragma once
+
+#include <string>
 #include "HueLightState.h"
 #include <json/reader.h>
 

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CommandLineArguments.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommandLineArguments.h" />
+    <ClInclude Include="HueRules.h" />
+    <ClInclude Include="Arguments\Flash.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SwitchBathroom.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SetBathroomDay.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SetBathroomNight.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="HueHelpers.h" />
+    <ClInclude Include="Arguments\Command.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\AllOff.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Arguments">
+      <UniqueIdentifier>{f369781f-4117-457f-99d4-7501150e6ace}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

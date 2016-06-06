@@ -89,7 +89,7 @@
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
       <ShowIncludes>true</ShowIncludes>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -104,7 +104,7 @@
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -118,7 +118,7 @@
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -132,7 +132,7 @@
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -146,7 +146,7 @@
     <ClCompile>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -160,7 +160,7 @@
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
       <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreSpecificDefaultLibraries>
@@ -175,7 +175,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arguments\AllOff.h" />
+    <ClInclude Include="Arguments\Command.h" />
+    <ClInclude Include="Arguments\Flash.h" />
+    <ClInclude Include="Arguments\SetBathroomDay.h" />
+    <ClInclude Include="Arguments\SetBathroomNight.h" />
+    <ClInclude Include="Arguments\SwitchBathroom.h" />
     <ClInclude Include="CommandLineArguments.h" />
+    <ClInclude Include="HueHelpers.h" />
     <ClInclude Include="HueRules.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

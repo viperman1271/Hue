@@ -1,3 +1,5 @@
+#pragma once
+
 #include "HueSystemInformation.h"
 #include <iostream>
 

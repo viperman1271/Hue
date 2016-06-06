@@ -1,4 +1,6 @@
-﻿#include "HueRuleActionBody.h"
+﻿#pragma once
+
+#include "HueRuleActionBody.h"
 
 struct HueRuleAction
 {

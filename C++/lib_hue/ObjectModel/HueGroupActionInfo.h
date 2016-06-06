@@ -1,4 +1,6 @@
-﻿struct HueGroupActionInfo
+﻿#pragma once
+
+struct HueGroupActionInfo
 {
     HueGroupActionInfo(const Json::Value& value)
     : on(value.get("on", false).asBool())

@@ -1,8 +1,10 @@
 #pragma once
 
 #include <vector>
+#include "HueBridge.h"
+#include "Arguments/Command.h"
 
-class CommandLineArguments
+class CommandLineCommands
 {
 public:
 	enum ACTIONS
@@ -15,8 +17,14 @@ public:
 		COUNT
 	};
 
+	CommandLineCommands();
+
 	void Parse(int argc, char** argv);
+	void Execute();
+
+	void SetBridge(HueBridge* bridge);
 	const std::vector<ACTIONS>& GetActions() const { return m_actions; }
 private:
 	std::vector<ACTIONS> m_actions;
+	std::vector<Command*> m_commands;
 };
