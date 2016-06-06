@@ -40,30 +40,5 @@ int main(int argc, char** argv)
 	cmdArgs.SetBridge(bridge);
 	cmdArgs.Execute();
 
-// 	for (CommandLineCommands::ACTIONS action : cmdArgs.GetActions())
-// 	{
-// 		switch (action)
-// 		{
-// 		case CommandLineCommands::FLASH:
-// 			bridge->FlashLights();
-// 			break;
-// 
-// 		case CommandLineCommands::SWITCH_BATHROOM:
-// 			SwitchSceneForLight(bridge);
-// 			break;
-// 
-// 		case CommandLineCommands::SET_BATHROOM_DAY:
-// 			SetBathroomSceneForDay(bridge);
-// 			break;
-// 
-// 		case CommandLineCommands::SET_BATHROOM_NIGHT:
-// 			SetBathroomSceneForNight(bridge);
-// 			break;
-// 
-// 		default:
-// 			continue;
-// 		}
-// 	}
-
     return 0;
 }

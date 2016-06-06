@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "Arguments/AllOff.h"
+#include "Arguments/AllOn.h"
 #include "Arguments/Flash.h"
 #include "Arguments/SetBathroomDay.h"
 #include "Arguments/SetBathroomNight.h"
@@ -10,6 +11,7 @@
 CommandLineCommands::CommandLineCommands()
 {
 	m_commands.push_back(new AllOffCommand());
+	m_commands.push_back(new AllOnCommand());
 	m_commands.push_back(new FlashCommand());
 	m_commands.push_back(new SetBathroomDayCommand());
 	m_commands.push_back(new SetBathroomNightCommand());

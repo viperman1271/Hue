@@ -6,7 +6,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandLineArguments.h" />
-    <ClInclude Include="HueRules.h" />
     <ClInclude Include="Arguments\Flash.h">
       <Filter>Arguments</Filter>
     </ClInclude>
@@ -24,6 +23,9 @@
       <Filter>Arguments</Filter>
     </ClInclude>
     <ClInclude Include="Arguments\AllOff.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\AllOn.h">
       <Filter>Arguments</Filter>
     </ClInclude>
   </ItemGroup>

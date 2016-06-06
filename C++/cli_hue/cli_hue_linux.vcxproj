@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arguments\AllOff.h" />
+    <ClInclude Include="Arguments\AllOn.h" />
     <ClInclude Include="Arguments\Command.h" />
     <ClInclude Include="Arguments\Flash.h" />
     <ClInclude Include="Arguments\SetBathroomDay.h" />
@@ -183,7 +184,6 @@
     <ClInclude Include="Arguments\SwitchBathroom.h" />
     <ClInclude Include="CommandLineArguments.h" />
     <ClInclude Include="HueHelpers.h" />
-    <ClInclude Include="HueRules.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
