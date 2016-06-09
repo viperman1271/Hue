@@ -4,15 +4,15 @@ public class MyData {
 
     static String[] nameArray = {
             "WiFi",
-            "Light",
-            "Light",
-            "Light",
-            "Light",
-            "Light",
-            "Light",
-            "Light",
-            "Light",
-            "Light"
+            "Scene",
+            "Scene",
+            "Scene",
+            "Light1",
+            "Light2",
+            "Light3",
+            "Light4",
+            "Light5",
+            "Light6"
     };
     static String[] emailArray = {
             "harry@gmail.com",
