@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvLightName5"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:text="WiFi" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivLightStatus5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_light_off" />
+
+        <TextView
+            android:id="@+id/tvLightStatus5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ivLightStatus5"
+            android:textSize="20sp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvLightBrightness5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLightStatus5"
+            android:layout_toRightOf="@id/ivLightStatus5"
+            android:text="" />
+    </RelativeLayout>
+</LinearLayout>
