@@ -4,6 +4,12 @@
     <Filter Include="ObjectModel">
       <UniqueIdentifier>{473400bf-3b33-4a7e-a636-8ae45694ea44}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{4f573693-65f8-4906-871f-2fa44f085d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\libhue">
+      <UniqueIdentifier>{f260c6ea-6571-48d5-9b57-8e768edbba0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectModel\HueSystemInformation.cpp">
@@ -76,6 +82,8 @@
     <ClInclude Include="HueBridgeLocator.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="UrlProvider.h" />
-    <ClInclude Include="Platform.h" />
+    <ClInclude Include="include\libhue\Platform.h">
+      <Filter>include\libhue</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

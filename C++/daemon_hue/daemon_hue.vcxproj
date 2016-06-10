@@ -27,14 +27,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0858e663-3c3a-4552-9ddd-45c68d62b2ad}</ProjectGuid>
+    <ProjectGuid>{e8253e09-22a0-4b08-8086-0685902f0e4c}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>cli_hue_linux</RootNamespace>
+    <RootNamespace>daemon_hue</RootNamespace>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
     <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
-    <ProjectName>hue</ProjectName>
+    <ProjectName>hued</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
@@ -62,146 +62,115 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <TargetExt />
-    <TargetName>hue</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <ShowIncludes>true</ShowIncludes>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>;LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalOptions>-lz -lrt %(AdditionalOptions)</AdditionalOptions>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>;LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>;LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX;LINUX_VS</PreprocessorDefinitions>
-      <Verbose>true</Verbose>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);LINUX</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
-      <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-    </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <Link>
+      <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
+      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CommandLineArguments.cpp" />
+    <ClCompile Include="Callbacks.cpp" />
+    <ClCompile Include="Daemon.cpp" />
+    <ClCompile Include="IniFile.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arguments\AllOff.h" />
-    <ClInclude Include="Arguments\AllOn.h" />
-    <ClInclude Include="Arguments\Command.h" />
-    <ClInclude Include="Arguments\Flash.h" />
-    <ClInclude Include="Arguments\SetBathroomDay.h" />
-    <ClInclude Include="Arguments\SetBathroomNight.h" />
-    <ClInclude Include="Arguments\SwitchBathroom.h" />
-    <ClInclude Include="CommandLineArguments.h" />
-    <ClInclude Include="HueHelpers.h" />
+    <ClInclude Include="Daemon.h" />
+    <ClInclude Include="IniFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -28,37 +28,37 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(RemoteRootDir)/lib_curl_linux/include;$(RemoteRootDir)/lib_json_linux/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/lib_curl_linux/include;/home/pi/projects/lib_json_linux/include;/home/pi/projects/libhue/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>;LINUX;LINUX_VS</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -71,6 +71,7 @@
     <ClInclude Include="HueBridgeLocator.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="include\libhue\Platform.h" />
     <ClInclude Include="ObjectModel\HueBridgeInfo.h">
       <FileType>CppCode</FileType>
     </ClInclude>
@@ -125,7 +126,6 @@
     <ClInclude Include="ObjectModel\HueUserInfo.h">
       <FileType>CppCode</FileType>
     </ClInclude>
-    <ClInclude Include="Platform.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="UrlProvider.h">
       <FileType>CppCode</FileType>
