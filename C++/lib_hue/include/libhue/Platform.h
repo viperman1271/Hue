@@ -1,9 +1,9 @@
 #pragma once
 
 #include <time.h>
+#include <chrono>
 #ifdef LINUX
 #include <unistd.h>
-#include <chrono>
 #else
 #include <windows.h>
 #endif // LINUX

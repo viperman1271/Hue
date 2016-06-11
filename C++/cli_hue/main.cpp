@@ -3,7 +3,7 @@
 #include <curl/curl.h>
 
 #include "CommandLineArguments.h"
-#include "HueRules.h"
+#include "HueHelpers.h"
 #include <iostream>
 #include <string.h>
 

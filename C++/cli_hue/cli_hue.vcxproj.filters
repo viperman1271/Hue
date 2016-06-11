@@ -2,8 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CommandLineArguments.cpp" />
+    <ClCompile Include="HueHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HueRules.h" />
+    <ClInclude Include="CommandLineArguments.h" />
+    <ClInclude Include="HueHelpers.h" />
   </ItemGroup>
 </Project>

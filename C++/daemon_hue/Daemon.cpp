@@ -1,8 +1,10 @@
 #include "Daemon.h"
 #include <libhue/Platform.h>
 #include <iostream>
+#include <thread>
 #include "HueBridge.h"
 #include "HueBridgeLocator.h"
+#include <thread>
 
 #ifdef LINUX
 #include <sys/types.h>
@@ -24,24 +26,14 @@ Daemon::Daemon()
 
 int Daemon::RunImpl()
 {
-	ThreadInfo tcpClientListener;
+	ThreadInfo tcpServerThread;
+	tcpServerThread.thread = std::thread{ TcpClientListenerThread, reinterpret_cast<void*>(&tcpServerThread) };
 
-	auto pThreadReturn = pthread_create(&tcpClientListener.thread, nullptr, &TcpClientListenerThread, reinterpret_cast<void*>(&tcpClientListener));
-	if (pThreadReturn != 0)
-	{
-		return -1;
-	}
+	ThreadInfo httpGenThread;
+	httpGenThread.thread = std::thread{ HttpFileGeneratorThread, reinterpret_cast<void*>(&httpGenThread) };
 
-	ThreadInfo httpClientListener;
-
-	pThreadReturn = pthread_create(&httpClientListener.thread, nullptr, &HttpFileGeneratorThread, reinterpret_cast<void*>(&httpClientListener));
-	if (pThreadReturn != 0)
-	{
-		return -2;
-	}
-
-	pthread_join(tcpClientListener.thread, nullptr);
-	pthread_join(httpClientListener.thread, nullptr);
+	tcpServerThread.thread.join();
+	httpGenThread.thread.join();
 
 	return 0;
 }
@@ -76,7 +68,8 @@ void* Daemon::HttpFileGeneratorThread(void* ptr)
 	{
 		daemon->UpdateBridgeInfo();
 		daemon->GenerateHtmlFile();
-		HUEPLATFORM::SLEEP(secDuration);
+
+		std::this_thread::sleep_for(secDuration);
 	}
 	return nullptr;
 }
@@ -89,7 +82,7 @@ void* Daemon::TcpClientListenerThread(void* ptr)
 
 	while (true)
 	{
-		//HUEPLATFORM::SLEEP(secDuration);
+		std::this_thread::sleep_for(secDuration);
 	}
 	return nullptr;
 }

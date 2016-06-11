@@ -3,6 +3,7 @@
   <ItemGroup>
     <ClCompile Include="CommandLineArguments.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="HueHelpers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandLineArguments.h" />

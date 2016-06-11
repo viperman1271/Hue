@@ -3,6 +3,7 @@
 #ifdef LINUX
 #include <pthread.h>
 #endif // LINUX
+#include <thread>
 
 class HueBridge;
 
@@ -25,9 +26,7 @@ private:
 
 	struct ThreadInfo
 	{
-#ifdef LINUX
-		pthread_t thread;
-#endif //LINUX
+		std::thread thread;
 		Daemon* instance;
 	};
 

@@ -39,7 +39,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -47,12 +54,12 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)../lib_hue/bin/win32/$(ConfigurationName);$(ProjectDir)../libcurl/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libhue.lib;libcurl_a.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib;$(PRojectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libhue.lib;libcurl_a.lib;libjsoncpp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -69,14 +76,14 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)../lib_hue/bin/win32/$(ConfigurationName);$(ProjectDir)../libcurl/lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libhue.lib;libcurl_a.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib;$(PRojectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libhue.lib;libcurl_a.lib;libjsoncpp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -86,6 +93,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Callbacks.cpp" />
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
     <ClCompile Include="main.cpp" />

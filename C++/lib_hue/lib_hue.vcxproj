@@ -13,7 +13,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CA160A76-8941-4148-B676-556DED7CC35F}</ProjectGuid>
     <RootNamespace>lib_hue</RootNamespace>
-    <ProjectName>lib_hue_win32</ProjectName>
+    <ProjectName>libhue</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,21 +41,21 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\temp$(PlatformName)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)\$(PlatformName)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\temp\$(PlatformName)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)../JsonCpp/include;$(ProjectDir)../libcurl/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)../JsonCpp/include;$(ProjectDir)../libcurl/include;$(ProjectDir)/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -75,7 +76,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)../JsonCpp/include;$(ProjectDir)../libcurl/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)../JsonCpp/include;$(ProjectDir)../libcurl/include;$(ProjectDir)/include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
