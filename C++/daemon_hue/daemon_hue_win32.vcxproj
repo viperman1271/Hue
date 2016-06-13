@@ -65,6 +65,9 @@
     <Lib>
       <AdditionalDependencies>libHue.lib</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>robocopy $(ProjectDir)..\libcurl\bin\Win32\vc14\ $(OutputPath) *.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -86,6 +89,9 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>robocopy $(ProjectDir)..\libcurl\bin\Win32\vc14\ $(OutputPath) *.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib_hue\lib_hue.vcxproj">
