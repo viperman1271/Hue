@@ -58,10 +58,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib;$(PRojectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libhue.lib;libcurl_a.lib;libjsoncpp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <Lib>
       <AdditionalDependencies>libHue.lib</AdditionalDependencies>
@@ -76,15 +75,16 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib;$(PRojectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libhue.lib;libcurl_a.lib;libjsoncpp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
