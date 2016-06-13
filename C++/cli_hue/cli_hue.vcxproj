@@ -43,10 +43,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
     <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(ProjectDir)obj\$(PlatformName)\$(Configuration)\</IntDir>
     <OutDir>$(ProjectDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <TargetName>hue</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
