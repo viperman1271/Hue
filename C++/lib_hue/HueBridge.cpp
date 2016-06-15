@@ -4,7 +4,7 @@
 #include "ObjectModel/HueRegistration.h"
 #include "ObjectModel/HueResponse.h"
 #include "HttpClient.h"
-#include "Callbacks.h"
+#include "LibHue.h"
 #include <libhue/Platform.h>
 #include <iostream>
 #ifdef LINUX
@@ -13,9 +13,9 @@
 
 //Static member initialization
 #ifdef LINUX
-const std::string HueBridge::appname = "linuxhueapp";
+const std::string HueBridge::appname{ "linuxhueapp" };
 #else
-const std::string HueBridge::appname = "winhueapp";
+const std::string HueBridge::appname{ "winhueapp" };
 #endif
 
 bool HueBridge::InitializeRouter()
@@ -142,7 +142,7 @@ bool HueBridge::Register()
             // link button not pressed, inform on first try only
             if (retryCount == 0)
             {
-                libhue_callbacks::RegistationError(hueResponse.error.type);
+                LibHue::RegistationError(hueResponse.error.type);
             }
 
 			HUEPLATFORM::SLEEP(std::chrono::milliseconds(pauseMilliseconds));

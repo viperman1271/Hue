@@ -17,6 +17,7 @@
     <ClCompile Include="HueBridgeLocator.cpp" />
     <ClCompile Include="UrlProvider.cpp" />
     <ClCompile Include="HttpClient.cpp" />
+    <ClCompile Include="LibHue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h" />
@@ -78,6 +79,6 @@
     <ClInclude Include="HueBridge.h" />
     <ClInclude Include="HueBridgeLocator.h" />
     <ClInclude Include="HttpClient.h" />
-    <ClInclude Include="Callbacks.h" />
+    <ClInclude Include="LibHue.h" />
   </ItemGroup>
 </Project>

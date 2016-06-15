@@ -1,5 +1,9 @@
 #include "IniFile.h"
 
+#ifdef WINDOWS
+#include "Shlobj.h"
+#endif
+
 #include <string.h>
 #include <fstream>
 #include <iostream>
@@ -28,7 +32,15 @@ int IniFile::Init()
 int IniFile::Load()
 {
 	std::ifstream iniFile;
+#ifdef LINUX
 	iniFile.open("/etc/hued.conf");
+#else
+    char pszPath[MAX_PATH];
+    SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, pszPath);
+    int pathLength = strlen(pszPath);
+    sprintf_s(pszPath + pathLength, MAX_PATH - pathLength - 1, "%s", "\\hued.conf\0");
+    iniFile.open(pszPath);
+#endif
 	if (!iniFile.is_open())
 	{
 		std::cerr << "Couldn't open configuration file for hued";
@@ -40,8 +52,8 @@ int IniFile::Load()
 	iniFile.seekg(0, std::ios::beg);
 
 	char* pszFileContents = new char[fileSize+1];
+    memset(pszFileContents, 0, fileSize + 1);
 	iniFile.read(pszFileContents, fileSize);
-	pszFileContents[fileSize + 1] = '\0';
 
 	std::string fileContents{ pszFileContents };
 
@@ -50,13 +62,19 @@ int IniFile::Load()
 
 	std::stringstream ss;
 	ss << std::endl;
-	int index = 0;
+	unsigned int index = 0;
 	while (auto findIndex = fileContents.find(ss.str(), index))
 	{
-		if (findIndex == std::string::npos)
-			break;
-
-		std::string line = fileContents.substr(index, findIndex - index);
+        std::string line;
+        if (findIndex == std::string::npos)
+        {
+            line = fileContents.substr(index);
+            findIndex = fileContents.size();
+        }
+        else
+        {
+            line = fileContents.substr(index, findIndex - index);
+        }
 		if (line[0] != '#')
 		{
 			if (auto valueAssignment = fileContents.find('=', index))
@@ -68,7 +86,7 @@ int IniFile::Load()
 
 					std::cout << "Key: " << key << ", Value: " << value << std::endl;
 					
-					static const std::string HttpFileString("HttpFile");
+                    static const std::string HttpFileString{ "file" };
 					ToLower(key);
 					if (key == HttpFileString)
 					{
@@ -77,7 +95,10 @@ int IniFile::Load()
 				}
 			}
 		}
-		index = findIndex+1;
+		index = findIndex + 1;
+
+        if (index >= fileContents.size())
+            break;
 	}
 
 	iniFile.close();

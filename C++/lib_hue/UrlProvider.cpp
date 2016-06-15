@@ -6,7 +6,7 @@ UrlProvider::UrlProvider(const std::string& in_ip)
     if (ip.substr(0, 7) != "http://")
         ip = "http://" + ip;
 
-    if (*ip.end() == '/')
+    if (ip.find_last_of('/') < ip.size() - 1)
     {
         ip.erase(ip.end(), ip.end());
     }

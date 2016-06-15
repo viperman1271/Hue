@@ -62,7 +62,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib</AdditionalDependencies>
+      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <Lib>
@@ -88,7 +88,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib</AdditionalDependencies>
+      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -102,7 +102,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Callbacks.cpp" />
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
     <ClCompile Include="main.cpp" />

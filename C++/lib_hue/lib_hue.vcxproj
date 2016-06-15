@@ -92,9 +92,9 @@
     <ClCompile Include="HttpClient.cpp" />
     <ClCompile Include="HueBridge.cpp" />
     <ClCompile Include="HueBridgeLocator.cpp" />
+    <ClCompile Include="LibHue.cpp" />
     <ClCompile Include="ObjectModel\HueSystemInformation.cpp" />
     <ClCompile Include="UrlProvider.cpp" />
-    <ClInclude Include="Callbacks.h" />
     <ClInclude Include="HttpClient.h" />
     <ClInclude Include="HueBridge.h">
       <FileType>CppCode</FileType>
@@ -102,6 +102,7 @@
     <ClInclude Include="HueBridgeLocator.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClInclude Include="LibHue.h" />
     <ClInclude Include="ObjectModel\HueBridgeInfo.h">
       <FileType>CppCode</FileType>
     </ClInclude>

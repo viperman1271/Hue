@@ -4,7 +4,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
-    <ClCompile Include="Callbacks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daemon.h" />

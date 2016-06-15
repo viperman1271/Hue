@@ -11,6 +11,8 @@ public:
 	static int Init();
 	static IniFile* GetInstance() { return ms_instance; }
 
+    const std::string& GetHttpFilePath() const { return m_httpFile; }
+
 	int Load();
 private:
 	static IniFile* ms_instance;

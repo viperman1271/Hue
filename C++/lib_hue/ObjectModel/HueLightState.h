@@ -16,8 +16,9 @@ struct HueLightState
     , effect(value.get("effect", "").asString())
     , alert(value.get("alert", "").asString())
     , colormode(value.get("colormode", "").asString())
+    , x(value["xy"].get(static_cast<Json::Value::ArrayIndex>(0), 0.f).asFloat())
+    , y(value["xy"].get(static_cast<Json::Value::ArrayIndex>(1), 0.f).asFloat())
     {
-
     }
 
     bool on;
@@ -26,6 +27,8 @@ struct HueLightState
     int hue;
     int sat;
     int cy;
+    float x;
+    float y;
     std::string effect;
     std::string alert;
     std::string colormode;

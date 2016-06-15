@@ -4,17 +4,16 @@
 
 #include "CommandLineArguments.h"
 #include "HueHelpers.h"
+#include "LibHue.h"
+
 #include <iostream>
 #include <string.h>
 
-namespace libhue_callbacks
-{
-    void RegistationError(int error)
-    { 
-        if (error == 101)
-        {
-            std::cout << "Press the button on the link bridge" << std::endl;
-        }
+void RegistationError(int error)
+{ 
+    if (error == 101)
+    {
+        std::cout << "Press the button on the link bridge" << std::endl;
     }
 }
 
@@ -27,6 +26,8 @@ void ExceptionHandler()
 int main(int argc, char** argv)
 {
     std::set_terminate(ExceptionHandler);
+
+    LibHue::Initialize(RegistationError);
 
 	CommandLineCommands cmdArgs;
 	cmdArgs.Parse(argc, argv);

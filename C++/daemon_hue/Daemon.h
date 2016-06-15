@@ -26,6 +26,12 @@ private:
 
 	struct ThreadInfo
 	{
+        ThreadInfo(Daemon* in_pInstance) : instance{ in_pInstance } { }
+        
+        ThreadInfo() = delete;
+        ThreadInfo(const ThreadInfo& rhs) = delete;
+        ThreadInfo& operator==(const ThreadInfo& rhs) = delete;
+
 		std::thread thread;
 		Daemon* instance;
 	};

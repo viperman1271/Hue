@@ -63,6 +63,20 @@ CURL* HttpClient::Config()
         return nullptr;
     }
 
+    res = curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    if (res != CURLE_OK)
+    {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        return nullptr;
+    }
+
+    res = curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+    if (res != CURLE_OK)
+    {
+        std::cerr << "CURLE_CODE: " << curl_easy_strerror(res) << std::endl;
+        return nullptr;
+    }
+
     return curl;
 }
 

@@ -5,10 +5,15 @@
 #include <iostream>
 #include <curl/curl.h>
 
+#include "LibHue.h"
+
 const char* s_pszAddress = "https://www.meethue.com/api/nupnp";
 
 HueBridge* HueBridgeLocator::Locate()
 {
+    if (!LibHue::IsInitialized())
+        return nullptr;
+
     //https://www.meethue.com/api/nupnp
     return LocateWithApi();
 }
