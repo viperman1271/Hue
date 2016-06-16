@@ -10,8 +10,8 @@ public:
 
     std::string GetStatusUrl();
     std::string GetRegisterUrl();
-    std::string GetLampUrl(const std::string& lightKey);
-    std::string GetRuleUrl(const std::string& ruleKey);
+    std::string GetLampUrl(const std::string& lightKey) const;
+    std::string GetRuleUrl(const std::string& ruleKey) const;
 private:
     std::string ip;
 };

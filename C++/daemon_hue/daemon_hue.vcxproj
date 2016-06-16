@@ -169,7 +169,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Callbacks.cpp" />
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
     <ClCompile Include="main.cpp" />

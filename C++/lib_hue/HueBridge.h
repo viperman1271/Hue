@@ -27,10 +27,13 @@ public:
     void TurnOffLights();
     bool IsAfterSunset() const;
 
+	void TurnOnLight(const HueLightInformation& lightInfo) const;
+	void TurnOffLight(const HueLightInformation& lightInfo) const;
+
 private:
     bool Register();
 
-    void SetLightStatus(std::string lightKey, std::string json);
+    void SetLightStatus(const std::string& lightKey, const std::string& json) const;
 public:
     UrlProvider Urls;
     const std::string IP;

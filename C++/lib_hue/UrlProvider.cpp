@@ -28,12 +28,12 @@ std::string UrlProvider::GetRegisterUrl()
     return ip + "/api";
 }
 
-std::string UrlProvider::GetLampUrl(const std::string& lightKey)
+std::string UrlProvider::GetLampUrl(const std::string& lightKey) const
 {
     return ip + "/api/" + Settings::GetInstance()->GetBridgeApiKey() + "/lights/" + lightKey + "/state";
 }
 
-std::string UrlProvider::GetRuleUrl(const std::string& ruleKey)
+std::string UrlProvider::GetRuleUrl(const std::string& ruleKey) const
 {
     return ip + "/api/" + Settings::GetInstance()->GetBridgeApiKey() + "/rules/" + ruleKey + "/";
 }

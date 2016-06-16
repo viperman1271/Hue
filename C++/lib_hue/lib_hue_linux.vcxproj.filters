@@ -76,7 +76,6 @@
     <ClInclude Include="ObjectModel\HueUserInfo.h">
       <Filter>ObjectModel</Filter>
     </ClInclude>
-    <ClInclude Include="Callbacks.h" />
     <ClInclude Include="HttpClient.h" />
     <ClInclude Include="HueBridge.h" />
     <ClInclude Include="HueBridgeLocator.h" />

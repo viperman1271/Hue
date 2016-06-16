@@ -13,11 +13,11 @@ struct HueLightState
     , hue(value.get("hue", 0).asInt())
     , sat(value.get("sat", 0).asInt())
     , cy(value.get("cy", 0).asInt())
-    , effect(value.get("effect", "").asString())
-    , alert(value.get("alert", "").asString())
-    , colormode(value.get("colormode", "").asString())
     , x(value["xy"].get(static_cast<Json::Value::ArrayIndex>(0), 0.f).asFloat())
     , y(value["xy"].get(static_cast<Json::Value::ArrayIndex>(1), 0.f).asFloat())
+	, effect(value.get("effect", "").asString())
+	, alert(value.get("alert", "").asString())
+	, colormode(value.get("colormode", "").asString())
     {
     }
 

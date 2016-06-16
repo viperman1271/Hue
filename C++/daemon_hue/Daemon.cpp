@@ -11,6 +11,7 @@
 #include <thread>
 #include <iomanip>
 #include <sstream>
+#include <cassert>
 
 #ifdef LINUX
 #include <sys/types.h>
@@ -26,6 +27,7 @@ int Daemon::Run()
 
 Daemon::Daemon()
 	: m_bridge(nullptr)
+	, m_presentDevices(true)
 {
 
 }
@@ -35,16 +37,31 @@ int Daemon::RunImpl()
     ThreadInfo tcpServerThread{ this };
 	tcpServerThread.thread = std::thread{ TcpClientListenerThread, reinterpret_cast<void*>(&tcpServerThread) };
 
-    ThreadInfo httpGenThread{ this };
-	httpGenThread.thread = std::thread{ HttpFileGeneratorThread, reinterpret_cast<void*>(&httpGenThread) };
+    ThreadInfo updateThread{ this };
+	updateThread.thread = std::thread{ GenericUpdateThread, reinterpret_cast<void*>(&updateThread) };
 
 	tcpServerThread.thread.join();
-	httpGenThread.thread.join();
+	updateThread.thread.join();
 
 	return 0;
 }
 
-//#include <string>
+void Daemon::UpdateBridgeInfo()
+{
+	if (m_bridge == nullptr)
+	{
+		m_bridge = HueBridgeLocator::Locate();
+		if (m_bridge == nullptr)
+		{
+			std::cerr << "Cannot locate bridge" << std::endl;
+		}
+	}
+
+	if (m_bridge)
+	{
+		m_bridge->TryUpdateAllData();
+	}
+}
 
 void Daemon::GenerateHtmlFile()
 {
@@ -72,14 +89,28 @@ void Daemon::GenerateHtmlFile()
     file << "                <td>On</td>" << std::endl;
     for (const auto& light : m_bridge->info.lights)
     {
-        file << "                <td>" << (light.state.on ? "Yes" : "No") << "</td>" << std::endl;
+		if (light.state.on)
+		{
+			file << R"(                <td bgcolor="#8CFFA1">)" << (light.state.on ? "Yes" : "No") << "</td>" << std::endl;
+		}
+		else
+		{
+			file << R"(                <td bgcolor="#FFBCDC">)" << (light.state.on ? "Yes" : "No") << "</td>" << std::endl;
+		}
     }
     file << "            </tr>" << std::endl;
     file << "            <tr>" << std::endl;
     file << "                <td>Reachable</td>" << std::endl;
     for (const auto& light : m_bridge->info.lights)
     {
-        file << "                <td>" << (light.state.reachable ? "Yes" : "No") << "</td>" << std::endl;
+		if (light.state.reachable)
+		{
+			file << R"(                <td bgcolor="#8CFFA1">)" << (light.state.reachable ? "Yes" : "No") << "</td>" << std::endl;
+		}
+		else
+		{
+			file << R"(                <td bgcolor="#FFBCDC">)" << (light.state.reachable ? "Yes" : "No") << "</td>" << std::endl;
+		}
     }
     file << "            </tr>" << std::endl;
     file << "        </table>" << std::endl;
@@ -89,24 +120,46 @@ void Daemon::GenerateHtmlFile()
     file.close();
 }
 
-void Daemon::UpdateBridgeInfo()
+void Daemon::DetectPresenceWithDevices()
 {
-	if (m_bridge == nullptr)
+#ifdef LINUX
+	system("nmap -sP 10.0.0.1-255 -oX");
+#endif // LINUX
+	if (m_presentDevices)
 	{
-		m_bridge = HueBridgeLocator::Locate();
-		if (m_bridge == nullptr)
-		{
-			std::cerr << "Cannot locate bridge" << std::endl;
-		}
+		m_presentDevices = true;
+		m_lastPresentDeviceTime = std::chrono::system_clock::now();
 	}
-
-    if (m_bridge)
-    {
-        m_bridge->TryUpdateAllData();
-    }
 }
 
-void* Daemon::HttpFileGeneratorThread(void* ptr)
+void Daemon::ProcessEnergySaving()
+{
+	if (m_bridge == nullptr)
+		return;
+
+	if (!m_presentDevices)
+	{
+		for (const auto& light : m_bridge->info.lights)
+		{
+			m_bridge->TurnOffLight(light);
+		}
+	}
+	
+	m_activeLights.clear();
+
+	if(!m_presentDevices)
+	{
+		for (const auto& light : m_bridge->info.lights)
+		{
+			if (light.state.on)
+			{
+				m_activeLights.push_back(light);
+			}
+		}
+	}
+}
+
+void* Daemon::GenericUpdateThread(void* ptr)
 {
 	ThreadInfo* threadInfo = reinterpret_cast<ThreadInfo*>(ptr);
 	Daemon* daemon = threadInfo->instance;
@@ -117,6 +170,8 @@ void* Daemon::HttpFileGeneratorThread(void* ptr)
 	{
 		daemon->UpdateBridgeInfo();
 		daemon->GenerateHtmlFile();
+		daemon->DetectPresenceWithDevices();
+		daemon->ProcessEnergySaving();
 
 		std::this_thread::sleep_for(secDuration);
 	}
@@ -126,6 +181,7 @@ void* Daemon::HttpFileGeneratorThread(void* ptr)
 void* Daemon::TcpClientListenerThread(void* ptr)
 {
 	ThreadInfo* threadInfo = reinterpret_cast<ThreadInfo*>(ptr);
+	assert(threadInfo != nullptr);
 
 	const std::chrono::seconds secDuration = std::chrono::seconds(1);
 

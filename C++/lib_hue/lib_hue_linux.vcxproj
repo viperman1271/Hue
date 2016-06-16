@@ -63,7 +63,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Callbacks.h" />
     <ClInclude Include="HttpClient.h" />
     <ClInclude Include="HueBridge.h">
       <FileType>CppCode</FileType>

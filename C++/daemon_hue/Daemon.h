@@ -4,6 +4,10 @@
 #include <pthread.h>
 #endif // LINUX
 #include <thread>
+#include <chrono>
+#include <vector>
+
+#include "ObjectModel/HueLightInformation.h"
 
 class HueBridge;
 
@@ -15,15 +19,18 @@ public:
 
 	static int Run();
 
-	static void* HttpFileGeneratorThread(void* ptr);
+	static void* GenericUpdateThread(void* ptr);
 	static void* TcpClientListenerThread(void* ptr);
 
 private:
 	Daemon();
 	int RunImpl();
-	void GenerateHtmlFile();
 	void UpdateBridgeInfo();
+	void GenerateHtmlFile();
+	void DetectPresenceWithDevices();
+	void ProcessEnergySaving();
 
+private:
 	struct ThreadInfo
 	{
         ThreadInfo(Daemon* in_pInstance) : instance{ in_pInstance } { }
@@ -38,4 +45,8 @@ private:
 
 private:
 	HueBridge* m_bridge;
+	bool m_presentDevices;
+
+	std::chrono::system_clock::time_point m_lastPresentDeviceTime;
+	std::vector<HueLightInformation> m_activeLights;
 };

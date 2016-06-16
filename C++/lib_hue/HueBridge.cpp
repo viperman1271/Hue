@@ -162,7 +162,7 @@ bool HueBridge::Register()
     return false;
 }
 
-void HueBridge::SetLightStatus(std::string lightKey, std::string json)
+void HueBridge::SetLightStatus(const std::string& lightKey, const std::string& json) const
 {
     HttpClient::GetInstance()->Put(Urls.GetLampUrl(lightKey), json);
 }
@@ -177,4 +177,14 @@ bool HueBridge::IsAfterSunset() const
         }
     }
     return false;
+}
+
+void HueBridge::TurnOnLight(const HueLightInformation& lightInfo) const
+{
+	SetLightStatus(lightInfo.id, "{\"bri\": 254, \"on\": true }");
+}
+
+void HueBridge::TurnOffLight(const HueLightInformation& lightInfo) const
+{
+	SetLightStatus(lightInfo.id, "{\"bri\": 0, \"on\": false }");
 }
