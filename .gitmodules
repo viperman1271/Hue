@@ -1,0 +1,3 @@
+[submodule "C++/tinyxml2"]
+	path = C++/tinyxml2
+	url = https://github.com/leethomason/tinyxml2
