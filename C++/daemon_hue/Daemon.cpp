@@ -123,7 +123,7 @@ void Daemon::GenerateHtmlFile()
 void Daemon::DetectPresenceWithDevices()
 {
 #ifdef LINUX
-	system("nmap -sP 10.0.0.1-255 -oX");
+	system("nmap -sP 10.0.0.1-255 -oX /var/local/huedpd.xml");
 #endif // LINUX
 	if (m_presentDevices)
 	{
