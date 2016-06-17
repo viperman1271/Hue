@@ -12,11 +12,13 @@ public:
 	static IniFile* GetInstance() { return ms_instance; }
 
     const std::string& GetHttpFilePath() const { return m_httpFile; }
+	const std::string& GetNmapFilePath() const { return m_nmapFile; }
 
 	int Load();
 private:
 	static IniFile* ms_instance;
 
 	std::string m_httpFile;
+	std::string m_nmapFile;
 };
 

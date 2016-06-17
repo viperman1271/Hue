@@ -129,21 +129,18 @@ void Daemon::DetectPresenceWithDevices()
 {
 	std::ifstream iniFile;
 #ifdef LINUX
-	struct passwd* pw = getpwuid(getuid());
-	const char* homedir = pw->pw_dir;
+	struct stat buffer;
+	if (stat(IniFile::GetInstance()->GetNmapFilePath().c_str(), &buffer) == 0)
+	{
+		remove(IniFile::GetInstance()->GetNmapFilePath().c_str());
+	}
 
 	std::stringstream ss;
-	ss << homedir << "/huedpd.xml";
-
-	struct stat buffer;
-	if (stat(ss.str().c_str(), &buffer) == 0)
-	{
-		remove(ss.str().c_str());
-	}
-	system("nmap -sP 10.0.0.1-255 -oX ~/huedpd.xml");
+	ss << "nmap -sP 10.0.0.1-255 -oX " << IniFile::GetInstance()->GetNmapFilePath();
+	system(ss.str().c_str());
 #endif // LINUX
 #ifdef LINUX
-	iniFile.open(ss.str().c_str());
+	iniFile.open(IniFile::GetInstance()->GetNmapFilePath());
 #else
 	iniFile.open(R"(D:\huedpd.xml)");
 #endif // LINUX

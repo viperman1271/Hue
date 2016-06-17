@@ -14,6 +14,7 @@
 IniFile* IniFile::ms_instance = nullptr;
 
 IniFile::IniFile()
+	: m_nmapFile("/var/local/hue.xml")
 {
 
 }
@@ -88,10 +89,15 @@ int IniFile::Load()
 					std::cout << "Key: " << key << ", Value: " << value << std::endl;
 					
                     static const std::string HttpFileString{ "file" };
+					static const std::string NmapFileString{ "nmap" };
 					ToLower(key);
 					if (key == HttpFileString)
 					{
 						m_httpFile = value;
+					}
+					else if (key == NmapFileString)
+					{
+						m_nmapFile = value;
 					}
 				}
 			}
