@@ -60,3 +60,4 @@ C++/Hue.VC.opendb
 *.opendb
 C++/Hue.VC.db
 *.json
+C++/Debug-Lib/tinyxml2.lib

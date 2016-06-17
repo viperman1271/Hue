@@ -36,9 +36,10 @@ int IniFile::Load()
 	iniFile.open("/etc/hued.conf");
 #else
     char pszPath[MAX_PATH];
+	memset(pszPath, 0, MAX_PATH);
     SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, pszPath);
     int pathLength = strlen(pszPath);
-    sprintf_s(pszPath + pathLength, MAX_PATH - pathLength - 1, "%s", "\\hued.conf\0");
+    sprintf_s(pszPath + pathLength, MAX_PATH - pathLength - 1, "%s", "\\hued.conf");
     iniFile.open(pszPath);
 #endif
 	if (!iniFile.is_open())

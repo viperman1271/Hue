@@ -13,3 +13,10 @@ Need to ensure that libcurl and JsonCpp are both compiled and available. Ensure 
 	./configure
 	make
 	make install
+	
+After this we need to make and install tinyxml2 manually
+	
+	git submodule update
+	make
+	sudo cp tinyxml2.h /usr/local/include/
+	sudo cp libtinyxml2.a /usr/local/lib/

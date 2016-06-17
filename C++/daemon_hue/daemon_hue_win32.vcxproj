@@ -55,14 +55,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include;$(ProjectDir)../tinyxml2</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14;$(ProjectDir)..\Debug-Lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <Lib>
@@ -79,7 +79,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)../lib_hue;$(ProjectDir)../lib_hue/include;$(ProjectDir)../libcurl/include;$(ProjectDir)../JsonCpp/include;$(ProjectDir)../tinyxml2</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -88,7 +88,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ProjectDir)..\lib_hue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
+      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>

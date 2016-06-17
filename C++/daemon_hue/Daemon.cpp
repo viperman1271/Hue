@@ -5,6 +5,8 @@
 #include "IniFile.h"
 #include "LibHue.h"
 
+#include <tinyxml2.h>
+
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -16,7 +18,10 @@
 #ifdef LINUX
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include <netinet/in.h>
+#include <pwd.h>
 #endif //LINUX
 
 int Daemon::Run()
@@ -122,13 +127,94 @@ void Daemon::GenerateHtmlFile()
 
 void Daemon::DetectPresenceWithDevices()
 {
+	std::ifstream iniFile;
 #ifdef LINUX
-	system("nmap -sP 10.0.0.1-255 -oX /var/local/huedpd.xml");
-#endif // LINUX
-	if (m_presentDevices)
+	struct passwd* pw = getpwuid(getuid());
+	const char* homedir = pw->pw_dir;
+
+	std::stringstream ss;
+	ss << homedir << "/huedpd.xml";
+
+	struct stat buffer;
+	if (stat(ss.str().c_str(), &buffer) == 0)
 	{
-		m_presentDevices = true;
-		m_lastPresentDeviceTime = std::chrono::system_clock::now();
+		remove(ss.str().c_str());
+	}
+	system("nmap -sP 10.0.0.1-255 -oX ~/huedpd.xml");
+#endif // LINUX
+#ifdef LINUX
+	iniFile.open(ss.str().c_str());
+#else
+	iniFile.open(R"(D:\huedpd.xml)");
+#endif // LINUX
+	
+	if (!iniFile.is_open())
+	{
+		return;
+	}
+
+	m_presentDevices = false;
+
+	iniFile.seekg(0, std::ios::end);
+	int fileSize = static_cast<int>(iniFile.tellg());
+	iniFile.seekg(0, std::ios::beg);
+
+	char* pszFileContents = new char[fileSize + 1];
+	memset(pszFileContents, 0, fileSize + 1);
+	iniFile.read(pszFileContents, fileSize);
+
+	std::string fileContents{ pszFileContents };
+	delete [] pszFileContents;
+	pszFileContents = nullptr;
+
+	auto index = fileContents.find("<nmaprun");
+	fileContents = fileContents.substr(index);
+
+	tinyxml2::XMLDocument doc;
+	tinyxml2::XMLError err = doc.Parse(fileContents.c_str());
+	if(err != tinyxml2::XML_SUCCESS)
+	{ 
+		return;
+	}
+
+	if (tinyxml2::XMLElement* rootElem = doc.FirstChildElement("nmaprun"))
+	{
+		for (tinyxml2::XMLElement* childElem = rootElem->FirstChildElement(); childElem != nullptr; childElem = childElem->NextSiblingElement())
+		{
+			if (childElem == nullptr)
+				continue;
+
+			if (strcmp(childElem->Name(), "host") != 0)
+				continue;
+
+			bool isStateUp = false;
+			if(tinyxml2::XMLElement* statusElem = childElem->FirstChildElement("status"))
+			{ 
+				isStateUp = strcmp(statusElem->Attribute("state"), "up") == 0;
+			}
+
+			std::vector<std::string> hostnames;
+			if (tinyxml2::XMLElement* hostnamesElem = childElem->FirstChildElement("hostnames"))
+			{
+				for (tinyxml2::XMLElement* hostnameElem = hostnamesElem->FirstChildElement(); hostnameElem != nullptr; hostnameElem = hostnameElem->NextSiblingElement())
+				{
+					if (hostnameElem == nullptr || strcmp(hostnameElem->Name(), "hostname") != 0)
+						continue;
+
+					hostnames.emplace_back(hostnameElem->Attribute("name"));
+				}
+
+				for (std::string& name : hostnames)
+				{
+					if (name.find("android-") != std::string::npos && isStateUp)
+					{
+						m_presentDevices = true;
+						m_lastPresentDeviceTime = std::chrono::system_clock::now();
+						break;
+					}
+				}
+			}
+		}
 	}
 }
 

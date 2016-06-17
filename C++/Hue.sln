@@ -10,11 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CPlusPlus", "CPlusPlus", "{4B30F87F-54EA-4CB7-99BB-40FE1493CFB9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_json_win32", "JsonCpp\makefiles\msvc2013\lib_json.vcxproj", "{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libjsoncpp", "JsonCpp\makefiles\msvc2013\lib_json.vcxproj", "{1E6C2C1C-6453-4129-AE3F-0EE8E6599C89}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cli_hue_win32", "cli_hue\cli_hue.vcxproj", "{D2326695-919F-4521-B5F4-4D67E0F049BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hue", "cli_hue\cli_hue.vcxproj", "{D2326695-919F-4521-B5F4-4D67E0F049BC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lib_hue_win32", "lib_hue\lib_hue.vcxproj", "{CA160A76-8941-4148-B676-556DED7CC35F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhue", "lib_hue\lib_hue.vcxproj", "{CA160A76-8941-4148-B676-556DED7CC35F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win32", "win32", "{D51C5D8B-2A8A-4E3C-8C43-3A586843DCE3}"
 EndProject
@@ -27,6 +27,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hued", "daemon_hue\daemon_hue.vcxproj", "{E8253E09-22A0-4B08-8086-0685902F0E4C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hued", "daemon_hue\daemon_hue_win32.vcxproj", "{C0841509-BC32-46DE-8454-5854C3A52DCE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml2", "tinyxml2\tinyxml2\tinyxml2.vcxproj", "{D1C528B6-AA02-4D29-9D61-DC08E317A70D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +108,18 @@ Global
 		{C0841509-BC32-46DE-8454-5854C3A52DCE}.Release|Win32.ActiveCfg = Release|Win32
 		{C0841509-BC32-46DE-8454-5854C3A52DCE}.Release|Win32.Build.0 = Release|Win32
 		{C0841509-BC32-46DE-8454-5854C3A52DCE}.Release|x64.ActiveCfg = Release|Win32
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|ARM.ActiveCfg = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|ARM.Build.0 = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|Win32.ActiveCfg = Debug-Lib|Win32
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|Win32.Build.0 = Debug-Lib|Win32
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|x64.ActiveCfg = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Debug|x64.Build.0 = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|ARM.ActiveCfg = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|ARM.Build.0 = Debug-Dll|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|Win32.ActiveCfg = Release-Lib|Win32
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|Win32.Build.0 = Release-Lib|Win32
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|x64.ActiveCfg = Release-Lib|x64
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D}.Release|x64.Build.0 = Release-Lib|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +134,6 @@ Global
 		{B0D59875-E14D-44E3-B4E8-6C6ACC103FC4} = {B75B69BB-E555-45E0-91F0-AA9972D00E1F}
 		{E8253E09-22A0-4B08-8086-0685902F0E4C} = {B75B69BB-E555-45E0-91F0-AA9972D00E1F}
 		{C0841509-BC32-46DE-8454-5854C3A52DCE} = {D51C5D8B-2A8A-4E3C-8C43-3A586843DCE3}
+		{D1C528B6-AA02-4D29-9D61-DC08E317A70D} = {D51C5D8B-2A8A-4E3C-8C43-3A586843DCE3}
 	EndGlobalSection
 EndGlobal

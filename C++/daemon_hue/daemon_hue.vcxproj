@@ -94,7 +94,7 @@
     </RemotePostBuildEvent>
     <Link>
       <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <LibraryDependencies>hue;jsoncpp;curl;tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -108,7 +108,7 @@
     </RemotePostBuildEvent>
     <Link>
       <AdditionalOptions>-pthread %(AdditionalOptions)</AdditionalOptions>
-      <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
+      <LibraryDependencies>hue;jsoncpp;curl;tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
