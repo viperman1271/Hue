@@ -72,7 +72,7 @@ void HueBridge::AlertAllLights()
     {
         for(auto light : info.lights)
         {
-            SetLightStatus(light.id, "{\"alert\": \"select\" }");
+            SetLightStatus(light.id, R"({ "alert": "select" })");
         }
     }
 }
@@ -87,14 +87,14 @@ void HueBridge::FlashLights()
     {
         for(auto light : info.lights)
         {
-            SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
+            SetLightStatus(light.id, R"({ "bri": 254, "on": true, "transitiontime":0 })");
         }
 
 		HUEPLATFORM::SLEEP(std::chrono::seconds(1));
 
         for(auto light : info.lights)
         {
-            SetLightStatus(light.id, "{\"bri\": 0, \"on\": false }");
+            SetLightStatus(light.id, R"({ "bri": 0, "on": false, "transitiontime":0 })");
         }
     }
 }
@@ -105,7 +105,7 @@ void HueBridge::TurnOnLights()
     {
         for (auto light : info.lights)
         {
-            SetLightStatus(light.id, "{\"bri\": 254, \"on\": true }");
+            SetLightStatus(light.id, R"({"bri": 254, "on": true })");
         }
     }
 }
@@ -116,7 +116,7 @@ void HueBridge::TurnOffLights()
     {
         for(auto light : info.lights)
         {
-            SetLightStatus(light.id, "{\"on\": false }");
+            SetLightStatus(light.id, R"({"on": false })");
         }
     }
 }
