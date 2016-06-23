@@ -13,6 +13,7 @@ public:
 
     const std::string& GetHttpFilePath() const { return m_httpFile; }
 	const std::string& GetNmapFilePath() const { return m_nmapFile; }
+	bool GetEnergySaving() const { return m_energySaving; }
 
 	int Load();
 private:
@@ -20,5 +21,6 @@ private:
 
 	std::string m_httpFile;
 	std::string m_nmapFile;
+	bool m_energySaving;
 };
 

@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "ObjectModel/HueLightInformation.h"
+#include "PresenceFile.h"
 
 class HueBridge;
 
@@ -27,8 +28,8 @@ private:
 	int RunImpl();
 	void UpdateBridgeInfo();
 	void GenerateHtmlFile();
-	void DetectPresenceWithDevices();
-	void ProcessEnergySaving();
+	bool DetectPresenceWithDevices();
+	void ProcessEnergySaving(bool presentDevice);
 
 private:
 	struct ThreadInfo
@@ -45,8 +46,7 @@ private:
 
 private:
 	HueBridge* m_bridge;
-	bool m_presentDevices;
+	PresenceFile m_presentFile;
 
-	std::chrono::system_clock::time_point m_lastPresentDeviceTime;
 	std::vector<HueLightInformation> m_activeLights;
 };

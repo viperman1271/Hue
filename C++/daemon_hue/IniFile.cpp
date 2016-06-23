@@ -15,6 +15,7 @@ IniFile* IniFile::ms_instance = nullptr;
 
 IniFile::IniFile()
 	: m_nmapFile("/var/local/hue.xml")
+	, m_energySaving(true)
 {
 
 }
@@ -87,9 +88,10 @@ int IniFile::Load()
 					std::string value = fileContents.substr(valueAssignment + 1, findIndex - valueAssignment - 1);
 
 					std::cout << "Key: " << key << ", Value: " << value << std::endl;
-					
-                    static const std::string HttpFileString{ "file" };
+
+					static const std::string HttpFileString{ "file" };
 					static const std::string NmapFileString{ "nmap" };
+					static const std::string EnergySavingString{ "energysaving" };
 					ToLower(key);
 					if (key == HttpFileString)
 					{
@@ -98,6 +100,14 @@ int IniFile::Load()
 					else if (key == NmapFileString)
 					{
 						m_nmapFile = value;
+					}
+					else if (key == EnergySavingString)
+					{
+						ToLower(value);
+						if (value == "true")
+							m_energySaving = true;
+						else
+							m_energySaving = false;
 					}
 				}
 			}

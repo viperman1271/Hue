@@ -14,14 +14,13 @@
 #include <iomanip>
 #include <sstream>
 #include <cassert>
+#include <mutex>
 
 #ifdef LINUX
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <sys/stat.h>
 #include <unistd.h>
 #include <netinet/in.h>
-#include <pwd.h>
 #endif //LINUX
 
 int Daemon::Run()
@@ -32,7 +31,6 @@ int Daemon::Run()
 
 Daemon::Daemon()
 	: m_bridge(nullptr)
-	, m_presentDevices(true)
 {
 
 }
@@ -125,102 +123,17 @@ void Daemon::GenerateHtmlFile()
     file.close();
 }
 
-void Daemon::DetectPresenceWithDevices()
+bool Daemon::DetectPresenceWithDevices()
 {
-	std::ifstream iniFile;
-#ifdef LINUX
-	struct stat buffer;
-	if (stat(IniFile::GetInstance()->GetNmapFilePath().c_str(), &buffer) == 0)
-	{
-		remove(IniFile::GetInstance()->GetNmapFilePath().c_str());
-	}
-
-	std::stringstream ss;
-	ss << "nmap -sP 10.0.0.1-255 -oX " << IniFile::GetInstance()->GetNmapFilePath();
-	system(ss.str().c_str());
-#endif // LINUX
-#ifdef LINUX
-	iniFile.open(IniFile::GetInstance()->GetNmapFilePath());
-#else
-	iniFile.open(R"(D:\huedpd.xml)");
-#endif // LINUX
-	
-	if (!iniFile.is_open())
-	{
-		return;
-	}
-
-	m_presentDevices = false;
-
-	iniFile.seekg(0, std::ios::end);
-	int fileSize = static_cast<int>(iniFile.tellg());
-	iniFile.seekg(0, std::ios::beg);
-
-	char* pszFileContents = new char[fileSize + 1];
-	memset(pszFileContents, 0, fileSize + 1);
-	iniFile.read(pszFileContents, fileSize);
-
-	std::string fileContents{ pszFileContents };
-	delete [] pszFileContents;
-	pszFileContents = nullptr;
-
-	auto index = fileContents.find("<nmaprun");
-	fileContents = fileContents.substr(index);
-
-	tinyxml2::XMLDocument doc;
-	tinyxml2::XMLError err = doc.Parse(fileContents.c_str());
-	if(err != tinyxml2::XML_SUCCESS)
-	{ 
-		return;
-	}
-
-	if (tinyxml2::XMLElement* rootElem = doc.FirstChildElement("nmaprun"))
-	{
-		for (tinyxml2::XMLElement* childElem = rootElem->FirstChildElement(); childElem != nullptr; childElem = childElem->NextSiblingElement())
-		{
-			if (childElem == nullptr)
-				continue;
-
-			if (strcmp(childElem->Name(), "host") != 0)
-				continue;
-
-			bool isStateUp = false;
-			if(tinyxml2::XMLElement* statusElem = childElem->FirstChildElement("status"))
-			{ 
-				isStateUp = strcmp(statusElem->Attribute("state"), "up") == 0;
-			}
-
-			std::vector<std::string> hostnames;
-			if (tinyxml2::XMLElement* hostnamesElem = childElem->FirstChildElement("hostnames"))
-			{
-				for (tinyxml2::XMLElement* hostnameElem = hostnamesElem->FirstChildElement(); hostnameElem != nullptr; hostnameElem = hostnameElem->NextSiblingElement())
-				{
-					if (hostnameElem == nullptr || strcmp(hostnameElem->Name(), "hostname") != 0)
-						continue;
-
-					hostnames.emplace_back(hostnameElem->Attribute("name"));
-				}
-
-				for (std::string& name : hostnames)
-				{
-					if (name.find("android-") != std::string::npos && isStateUp)
-					{
-						m_presentDevices = true;
-						m_lastPresentDeviceTime = std::chrono::system_clock::now();
-						break;
-					}
-				}
-			}
-		}
-	}
+	return m_presentFile.DetectPresenceWithDevices();
 }
 
-void Daemon::ProcessEnergySaving()
+void Daemon::ProcessEnergySaving(bool presentDevice)
 {
 	if (m_bridge == nullptr)
 		return;
 
-	if (!m_presentDevices)
+	if (!presentDevice)
 	{
 		for (const auto& light : m_bridge->info.lights)
 		{
@@ -230,7 +143,7 @@ void Daemon::ProcessEnergySaving()
 	
 	m_activeLights.clear();
 
-	if(!m_presentDevices)
+	if(!presentDevice)
 	{
 		for (const auto& light : m_bridge->info.lights)
 		{
@@ -252,14 +165,30 @@ void* Daemon::GenericUpdateThread(void* ptr)
 	while (true)
 	{
 		daemon->UpdateBridgeInfo();
+		if(IniFile::GetInstance()->GetEnergySaving())
+		{
+			bool present = daemon->DetectPresenceWithDevices();
+			daemon->ProcessEnergySaving(present);
+		}
 		daemon->GenerateHtmlFile();
-		daemon->DetectPresenceWithDevices();
-		daemon->ProcessEnergySaving();
 
 		std::this_thread::sleep_for(secDuration);
 	}
 	return nullptr;
 }
+
+/*void* Daemon::SpecificPresenceDetector()
+{
+	ThreadInfo* threadInfo = reinterpret_cast<ThreadInfo*>(ptr);
+	Daemon* daemon = threadInfo->instance;
+
+	const std::chrono::seconds secDuration = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::minutes(1));
+
+	while (true)
+	{
+
+	}
+}*/
 
 void* Daemon::TcpClientListenerThread(void* ptr)
 {

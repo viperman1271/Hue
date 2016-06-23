@@ -4,9 +4,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
+    <ClCompile Include="PresenceFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daemon.h" />
     <ClInclude Include="IniFile.h" />
+    <ClInclude Include="PresenceFile.h" />
   </ItemGroup>
 </Project>
