@@ -107,6 +107,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arguments\AllOff.h" />
+    <ClInclude Include="Arguments\AllOn.h" />
+    <ClInclude Include="Arguments\Command.h" />
+    <ClInclude Include="Arguments\Flash.h" />
+    <ClInclude Include="Arguments\SetBathroomDay.h" />
+    <ClInclude Include="Arguments\SetBathroomNight.h" />
+    <ClInclude Include="Arguments\SwitchBathroom.h" />
+    <ClInclude Include="Arguments\TriggerSceneCommand.h" />
     <ClInclude Include="CommandLineArguments.h" />
     <ClInclude Include="HueHelpers.h" />
   </ItemGroup>

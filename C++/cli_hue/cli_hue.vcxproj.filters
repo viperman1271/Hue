@@ -8,5 +8,34 @@
   <ItemGroup>
     <ClInclude Include="CommandLineArguments.h" />
     <ClInclude Include="HueHelpers.h" />
+    <ClInclude Include="Arguments\AllOff.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\AllOn.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\Command.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\Flash.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SetBathroomDay.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SetBathroomNight.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\SwitchBathroom.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\TriggerSceneCommand.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Arguments">
+      <UniqueIdentifier>{9d5dfe20-98da-43df-b361-e4486ef1118d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

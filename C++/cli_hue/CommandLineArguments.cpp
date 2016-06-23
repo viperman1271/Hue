@@ -16,6 +16,7 @@ CommandLineCommands::CommandLineCommands()
 	m_commands.push_back(new SetBathroomDayCommand());
 	m_commands.push_back(new SetBathroomNightCommand());
 	m_commands.push_back(new SwitchBathroomCommand());
+	m_commands.push_back(new TriggerSceneCommand());
 }
 
 void CommandLineCommands::Parse(int argc, char ** argv)

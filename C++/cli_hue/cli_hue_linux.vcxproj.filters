@@ -29,6 +29,9 @@
     <ClInclude Include="Arguments\AllOn.h">
       <Filter>Arguments</Filter>
     </ClInclude>
+    <ClInclude Include="Arguments\TriggerSceneCommand.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Arguments">
