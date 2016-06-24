@@ -34,15 +34,9 @@ bool HueBridge::InitializeRouter()
 
 void HueBridge::TryUpdateAllData()
 {
-    std::string url = Urls.GetStatusUrl();
-    std::string responseFromServer = HttpClient::GetInstance()->Get(url);
+	Json::Value root;
 
-    Json::Value root;
-    Json::Reader reader;
-    reader.parse(responseFromServer, root);
-    HueResponse hueResponse(root);
-
-    if (hueResponse.error.type == 0)
+	if (GetStatusJson(root) == 0)
     {
         info.DeserializeJson(root);
 
@@ -52,16 +46,10 @@ void HueBridge::TryUpdateAllData()
 
 void HueBridge::TryUpdateAllRules()
 {
-    std::string url = Urls.GetStatusUrl();
-    std::string responseFromServer = HttpClient::GetInstance()->Get(url);
+	Json::Value root;
 
-    Json::Value root;
-    Json::Reader reader;
-    reader.parse(responseFromServer, root);
-    HueResponse hueResponse(root);
-
-    if (hueResponse.error.type == 0)
-    {
+	if (GetStatusJson(root) == 0)
+	{
         info.DeserializeJson(root);
     }
 }
@@ -160,6 +148,19 @@ bool HueBridge::Register()
 
     IsAuthenticated = false;
     return false;
+}
+
+int HueBridge::GetStatusJson(Json::Value& root) const
+{
+	std::string url = Urls.GetStatusUrl();
+	std::string responseFromServer = HttpClient::GetInstance()->Get(url);
+
+	Json::Value root;
+	Json::Reader reader;
+	reader.parse(responseFromServer, root);
+	HueResponse hueResponse(root);
+
+	return hueResponse.error.type;
 }
 
 void HueBridge::SetLightStatus(const std::string& lightKey, const std::string& json) const

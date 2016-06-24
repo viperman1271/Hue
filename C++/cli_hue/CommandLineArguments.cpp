@@ -3,15 +3,18 @@
 
 #include "Arguments/AllOff.h"
 #include "Arguments/AllOn.h"
+#include "Arguments/DumpJson.h"
 #include "Arguments/Flash.h"
 #include "Arguments/SetBathroomDay.h"
 #include "Arguments/SetBathroomNight.h"
 #include "Arguments/SwitchBathroom.h"
+#include "Arguments/TriggerSceneCommand.h"
 
 CommandLineCommands::CommandLineCommands()
 {
 	m_commands.push_back(new AllOffCommand());
 	m_commands.push_back(new AllOnCommand());
+	m_commands.push_back(new DumpJsonCommand());
 	m_commands.push_back(new FlashCommand());
 	m_commands.push_back(new SetBathroomDayCommand());
 	m_commands.push_back(new SetBathroomNightCommand());

@@ -4,6 +4,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CommandLineArguments.cpp" />
     <ClCompile Include="HueHelpers.cpp" />
+    <ClCompile Include="Arguments\DumpJson.cpp">
+      <Filter>Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Arguments\SetBathroomDay.cpp">
+      <Filter>Arguments</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandLineArguments.h" />
@@ -30,6 +36,9 @@
       <Filter>Arguments</Filter>
     </ClInclude>
     <ClInclude Include="Arguments\TriggerSceneCommand.h">
+      <Filter>Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Arguments\DumpJson.h">
       <Filter>Arguments</Filter>
     </ClInclude>
   </ItemGroup>

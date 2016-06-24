@@ -1,14 +1,12 @@
 #pragma once
 
 #include "Command.h"
-#include "HueHelpers.h"
 
-class SetBathroomDayCommand : public Command
+class DumpJsonCommand : public Command
 {
 	typedef Command super;
 public:
-	SetBathroomDayCommand();
+	DumpJsonCommand();
 
 	void Execute() override;
 };
-

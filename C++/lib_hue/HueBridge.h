@@ -33,6 +33,7 @@ public:
 private:
     bool Register();
 
+	int	 GetStatusJson(Json::Value& root) const;
     void SetLightStatus(const std::string& lightKey, const std::string& json) const;
 public:
     UrlProvider Urls;

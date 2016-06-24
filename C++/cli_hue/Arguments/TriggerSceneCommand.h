@@ -3,11 +3,11 @@
 #include "Command.h"
 #include "HueHelpers.h"
 
-class SwitchBathroomCommand : public Command
+class TriggerSceneCommand : public Command
 {
 	typedef Command super;
 public:
-	SwitchBathroomCommand()
+	TriggerSceneCommand()
 		: super("trigger_scene")
 	{
 
@@ -16,4 +16,4 @@ public:
 	void Execute() override
 	{
 	}
-}
+};

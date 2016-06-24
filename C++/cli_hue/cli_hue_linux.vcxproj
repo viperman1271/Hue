@@ -102,6 +102,10 @@
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
@@ -119,6 +123,10 @@
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
     </RemotePostBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -189,6 +197,10 @@
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arguments\DumpJson.cpp" />
+    <ClCompile Include="Arguments\SetBathroomDay.cpp" />
+    <ClCompile Include="Arguments\SetBathroomNight.cpp" />
+    <ClCompile Include="Arguments\SwitchBathroom.cpp" />
     <ClCompile Include="CommandLineArguments.cpp" />
     <ClCompile Include="HueHelpers.cpp" />
     <ClCompile Include="main.cpp" />
@@ -197,6 +209,7 @@
     <ClInclude Include="Arguments\AllOff.h" />
     <ClInclude Include="Arguments\AllOn.h" />
     <ClInclude Include="Arguments\Command.h" />
+    <ClInclude Include="Arguments\DumpJson.h" />
     <ClInclude Include="Arguments\Flash.h" />
     <ClInclude Include="Arguments\SetBathroomDay.h" />
     <ClInclude Include="Arguments\SetBathroomNight.h" />
