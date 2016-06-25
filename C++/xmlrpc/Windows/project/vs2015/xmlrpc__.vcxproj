@@ -406,18 +406,18 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\lib\libutil++\base64.cpp" />
+    <ClCompile Include="..\..\..\lib\libutil++\env_wrap.cpp" />
+    <ClCompile Include="..\..\..\lib\libutil++\girerr.cpp" />
+    <ClCompile Include="..\..\..\lib\libutil++\girmem.cpp" />
+    <ClCompile Include="..\..\..\lib\libutil++\Lock.cpp" />
     <ClCompile Include="..\..\..\lib\wininet_transport\pthreadx_win32.c" />
     <ClCompile Include="..\..\..\lib\wininet_transport\xmlrpc_wininet_transport.c" />
-    <ClCompile Include="..\..\..\src\cpp\base64.cpp" />
     <ClCompile Include="..\..\..\src\cpp\client.cpp" />
     <ClCompile Include="..\..\..\src\cpp\client_simple.cpp" />
     <ClCompile Include="..\..\..\src\cpp\curl.cpp" />
-    <ClCompile Include="..\..\..\src\cpp\env_wrap.cpp" />
     <ClCompile Include="..\..\..\src\cpp\fault.cpp" />
-    <ClCompile Include="..\..\..\src\cpp\girerr.cpp" />
-    <ClCompile Include="..\..\..\src\cpp\girmem.cpp" />
     <ClCompile Include="..\..\..\src\cpp\libwww.cpp" />
-    <ClCompile Include="..\..\..\src\cpp\Lock.cpp" />
     <ClCompile Include="..\..\..\src\cpp\outcome.cpp" />
     <ClCompile Include="..\..\..\src\cpp\packetsocket.cpp" />
     <ClCompile Include="..\..\..\src\cpp\param_list.cpp" />

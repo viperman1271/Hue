@@ -288,7 +288,7 @@ getCdata(xmlrpc_env *  const envP,
     const char * cursor;
     cursor = *cursorP;
 
-    char text[strlen(cursor)+1];
+    char* text = malloc(strlen(cursor)+1);
     unsigned int textCursor;
     bool end;
 
@@ -318,6 +318,8 @@ getCdata(xmlrpc_env *  const envP,
 
     *cdataP = strdup(text);
     *cursorP = cursor;
+	free(text);
+	text = NULL;
 }
 
 

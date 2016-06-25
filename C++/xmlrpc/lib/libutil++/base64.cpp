@@ -2,6 +2,11 @@
 #include <string>
 #include <vector>
 #include <bitset>
+#include <stdlib.h>
+
+#ifndef min
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif
 
 #include "xmlrpc-c/girerr.hpp"
 using girerr::error;

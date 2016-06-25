@@ -433,7 +433,9 @@ xmlrpc_bool_new(xmlrpc_env * const envP,
     return valP;
 }
 
-
+#ifndef finite
+#define finite isfinite
+#endif
 
 xmlrpc_value *
 xmlrpc_double_new(xmlrpc_env * const envP, 

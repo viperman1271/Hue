@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="StatusMessage.h" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="RpcCallMessage.h" />
+    <ClInclude Include="RpcReturnMessage.h" />
+    <ClInclude Include="RpcValue.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="RpcCallMessage.cpp" />
+    <ClCompile Include="RpcReturnMessage.cpp" />
+    <ClCompile Include="StatusMessage.cpp" />
+  </ItemGroup>
+</Project>

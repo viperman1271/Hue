@@ -97,7 +97,7 @@
       <VerboseOutput>true</VerboseOutput>
       <AdditionalOptions>-lz -lrt %(AdditionalOptions)</AdditionalOptions>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <RemotePostBuildEvent>
       <Command>sudo cp /home/pi/projects/$(ProjectName)/bin/$(PlatformName)/$(ConfigurationName)/$(ProjectName) /usr/local/bin/$(ProjectName)</Command>
@@ -117,7 +117,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
@@ -138,7 +138,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
@@ -155,7 +155,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
@@ -172,7 +172,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
@@ -189,7 +189,7 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <VerboseOutput>true</VerboseOutput>
-      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/;/home/pi/projects/librpc/bin/ARM/$(ConfigurationName)/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>hue;jsoncpp;curl</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>

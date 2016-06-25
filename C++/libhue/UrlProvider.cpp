@@ -18,12 +18,12 @@ UrlProvider::UrlProvider(const std::string& in_ip)
     }
 }
 
-std::string UrlProvider::GetStatusUrl()
+std::string UrlProvider::GetStatusUrl() const
 {
     return ip + "/api/" + Settings::GetInstance()->GetBridgeApiKey();
 }
 
-std::string UrlProvider::GetRegisterUrl()
+std::string UrlProvider::GetRegisterUrl() const
 {
     return ip + "/api";
 }

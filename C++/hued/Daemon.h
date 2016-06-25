@@ -23,6 +23,7 @@ public:
 	static void* GenericUpdateThread(void* ptr);
 	static void* TcpClientListenerThread(void* ptr);
 
+	HueBridge* GetBridge() const { return m_bridge; }
 private:
 	Daemon();
 	int RunImpl();

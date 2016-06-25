@@ -155,7 +155,6 @@ int HueBridge::GetStatusJson(Json::Value& root) const
 	std::string url = Urls.GetStatusUrl();
 	std::string responseFromServer = HttpClient::GetInstance()->Get(url);
 
-	Json::Value root;
 	Json::Reader reader;
 	reader.parse(responseFromServer, root);
 	HueResponse hueResponse(root);

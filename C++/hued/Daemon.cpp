@@ -23,6 +23,8 @@
 #include <netinet/in.h>
 #endif //LINUX
 
+#include "RpcServer.h"
+
 int Daemon::Run()
 {
 	Daemon d;
@@ -195,11 +197,8 @@ void* Daemon::TcpClientListenerThread(void* ptr)
 	ThreadInfo* threadInfo = reinterpret_cast<ThreadInfo*>(ptr);
 	assert(threadInfo != nullptr);
 
-	const std::chrono::seconds secDuration = std::chrono::seconds(1);
+	RpcServer* server = new RpcServer();
+	server->Run();
 
-	while (true)
-	{
-		std::this_thread::sleep_for(secDuration);
-	}
 	return nullptr;
 }
