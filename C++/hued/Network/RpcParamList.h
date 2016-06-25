@@ -4,7 +4,7 @@
 class 
 
 
-/*class RpcParamList
+/class RpcParamList
 {
 public:
 	RpcValue* GetParam(int index) { return m_params.at(index); }

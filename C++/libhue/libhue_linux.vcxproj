@@ -71,6 +71,7 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="include\libhue\Platform.h" />
+    <ClInclude Include="LibHue.h" />
     <ClInclude Include="ObjectModel\HueBridgeInfo.h">
       <FileType>CppCode</FileType>
     </ClInclude>
@@ -134,6 +135,7 @@
     <ClCompile Include="HttpClient.cpp" />
     <ClCompile Include="HueBridge.cpp" />
     <ClCompile Include="HueBridgeLocator.cpp" />
+    <ClCompile Include="LibHue.cpp" />
     <ClCompile Include="ObjectModel\HueSystemInformation.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="UrlProvider.cpp" />

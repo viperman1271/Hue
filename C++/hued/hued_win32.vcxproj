@@ -61,8 +61,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\libhue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14;$(ProjectDir)..\$(ConfigurationName)-Lib;$(ProjectDir)..\xmlrpc\bin\$(ConfigurationName)-Static-$(PlatformName)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib;libxmlrpc++.lib;libxmlrpc_util.lib;libxmlrpc.lib;libxmlrpc_server_abyss.lib;libxmlrpc_server.lib;libxmlrpc_abyss.lib;libxmlrpc_xmlparse.lib;libxmlrpc_xmltok.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\libhue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14;$(ProjectDir)..\$(ConfigurationName)-Lib;$(ProjectDir)..\$(ConfigurationName);$(ProjectDir)..\xmlrpc\bin\$(ConfigurationName)-Static-$(PlatformName)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib;librpc.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
     <Lib>
@@ -87,8 +87,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\libhue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14;$(ProjectDir)..\$(ConfigurationName)-Lib;$(ProjectDir)..\xmlrpc\bin\$(ConfigurationName)-Static-$(PlatformName)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib;libxmlrpc++.lib;libxmlrpc_util.lib;libxmlrpc.lib;libxmlrpc_server_abyss.lib;libxmlrpc_server.lib;libxmlrpc_abyss.lib;libxmlrpc_xmlparse.lib;libxmlrpc_xmltok.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\libhue\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\JsonCpp\bin\$(PlatformName)\$(ConfigurationName);$(ProjectDir)..\libcurl\lib\Win32\vc14;$(ProjectDir)..\$(ConfigurationName)-Lib;$(ProjectDir)..\$(ConfigurationName);$(ProjectDir)..\xmlrpc\bin\$(ConfigurationName)-Static-$(PlatformName)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>tinyxml2.lib;libjsoncpp.lib;libhue.lib;libcurl.lib;crypt32.lib;ws2_32.lib;wldap32.lib;libeay32.lib;ssleay32.lib;shell32.lib;librpc.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -109,6 +109,7 @@
     <ClCompile Include="Network\TcpServer.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
+    <ClCompile Include="Network\Win32\TcpServerWin32.cpp" />
     <ClCompile Include="PresenceFile.cpp" />
     <ClCompile Include="RpcMethods\TurnOnLights.cpp" />
   </ItemGroup>

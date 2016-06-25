@@ -14,6 +14,9 @@
     <ClCompile Include="Network\TcpServer.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="Network\Win32\TcpServerWin32.cpp">
+      <Filter>Network\Win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daemon.h" />
@@ -41,6 +44,9 @@
     </Filter>
     <Filter Include="RpcMethods">
       <UniqueIdentifier>{e8572766-554c-40c0-86b7-a076d04b88c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Win32">
+      <UniqueIdentifier>{809ca629-ba89-425c-9985-b9fe246505b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

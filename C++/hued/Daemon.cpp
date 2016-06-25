@@ -23,7 +23,7 @@
 #include <netinet/in.h>
 #endif //LINUX
 
-#include "RpcServer.h"
+#include "Network/RpcServer.h"
 
 int Daemon::Run()
 {
@@ -197,7 +197,7 @@ void* Daemon::TcpClientListenerThread(void* ptr)
 	ThreadInfo* threadInfo = reinterpret_cast<ThreadInfo*>(ptr);
 	assert(threadInfo != nullptr);
 
-	RpcServer* server = new RpcServer();
+	RpcServer* server = new RpcServer(threadInfo->instance);
 	server->Run();
 
 	return nullptr;

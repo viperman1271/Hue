@@ -1,16 +1,13 @@
-#include "TcpServer.h"
+#include "Network/TcpServer.h"
 
 #include <stdio.h>
 #include <string.h>
-
-#ifdef LINUX
+#include <iostream>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netdb.h>
 #include <arpa/inet.h>
-#endif // LINUX
-#include <iostream>
 
 #include "StatusMessage.h"
 
@@ -24,41 +21,11 @@ void* get_in_addr(struct sockaddr * sa)
 	return &(((struct sockaddr_in6 *)sa)->sin6_addr);
 }
 
-struct TcpServerThreadInfo
-{
-	TcpServerThreadInfo(TcpServer* in_pInstance, int sConn, struct sockaddr_storage in_client_addr) : instance{ in_pInstance }, conn(sConn), client_addr(in_client_addr) { }
-
-	TcpServerThreadInfo() = delete;
-	TcpServerThreadInfo(const TcpServerThreadInfo& rhs) = delete;
-	TcpServerThreadInfo& operator==(const TcpServerThreadInfo& rhs) = delete;
-
-	std::thread thread;
-	TcpServer* instance;
-	int conn;
-	struct sockaddr_storage client_addr;
-};
-
-void TcpServer::Init()
-{
-
-}
-
 void TcpServer::Run()
 {
-	// Variables for writing a server. 
-	/*
-	1. Getting the address data structure.
-	2. Openning a new socket.
-	3. Bind to the socket.
-	4. Listen to the socket.
-	5. Accept Connection.
-	6. Receive Data.
-	7. Close Connection.
-	*/
 	int status;
 	struct addrinfo hints, *res;
 	int listner;
-
 
 	// Before using hint you have to make sure that the data structure is empty 
 	memset(&hints, 0, sizeof hints);
@@ -138,7 +105,7 @@ void* TcpServer::ClientThread(void* ptr)
 	{
 		msg = new StatusMessage(StatusMessage::ID::WELCOME);
 		msg->Serialize();
-		status = send(ti->conn, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		status = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
@@ -148,10 +115,10 @@ void* TcpServer::ClientThread(void* ptr)
 		char buffer[4096];
 		while (true)
 		{
-			auto bytesRecv = recv(ti->conn, buffer, 4096, 0);
+			auto bytesRecv = recv(ti->socket, buffer, 4096, 0);
 			if (bytesRecv <= 0)
 			{
-				std::cout << gai_strerror(ti->conn);
+				std::cout << gai_strerror(ti->socket);
 				bSocketError = true;
 				break;
 			}
@@ -172,41 +139,16 @@ void* TcpServer::ClientThread(void* ptr)
 	{
 		msg = new StatusMessage(StatusMessage::ID::CLOSE);
 		msg->Serialize();
-		status = send(ti->conn, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		status = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
-	close(ti->conn);
+	close(ti->socket);
 
 	return nullptr;
 }
 
-bool TcpServer::HandleMessage(TcpServerThreadInfo* threadInfo, Message* msg)
+void TcpServer::TransmitMessage(TcpServerThreadInfo* threadInfo, Message* msg)
 {
-	const StatusMessage closeMessage(StatusMessage::ID::CLOSE);
-	if (msg == &closeMessage)
-		return false;
-}
-
-void TcpServer::SendMessage(TcpServerThreadInfo* threadInfo, Message* msg)
-{
-	send(threadInfo->conn, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
-}
-
-Message* TcpServer::CreateMessage(const char* buffer)
-{
-	tinyxml2::XMLDocument doc;
-	tinyxml2::XMLError err = doc.Parse(buffer);
-	if (err != tinyxml2::XML_SUCCESS)
-	{
-		return nullptr;
-	}
-
-	if (tinyxml2::XMLElement* rootElem = doc.FirstChildElement("message"))
-	{
-		std::string type = rootElem->Attribute("type");
-		return m_messages[type]();
-	}
-
-	return nullptr;
+	send(threadInfo->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 }

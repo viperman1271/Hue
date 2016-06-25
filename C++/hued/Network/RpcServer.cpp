@@ -32,7 +32,7 @@ bool RpcServer::HandleMessage(TcpServerThreadInfo* threadInfo, Message* msg)
 		bool returnVal = HandleRpcCall(rpcMsg->GetFunc(), value);
 
 		Message* sendMessage = new RpcReturnMessage(value);
-		SendMessage(threadInfo, sendMessage);
+		TransmitMessage(threadInfo, sendMessage);
 		delete sendMessage;
 
 		return returnVal;

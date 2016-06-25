@@ -20,6 +20,7 @@
     <ClCompile Include="HueBridgeLocator.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="UrlProvider.cpp" />
+    <ClCompile Include="LibHue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObjectModel\HueBridgeInfo.h">
@@ -84,5 +85,6 @@
     <ClInclude Include="include\libhue\Platform.h">
       <Filter>include\libhue</Filter>
     </ClInclude>
+    <ClInclude Include="LibHue.h" />
   </ItemGroup>
 </Project>

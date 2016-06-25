@@ -11,7 +11,10 @@
     <ClCompile Include="Network\RpcServer.cpp">
       <Filter>Network</Filter>
     </ClCompile>
-    <ClCompile Include="RpcMethods\TurnOn.cpp">
+    <ClCompile Include="Network\Linux\TcpServerLinux.cpp">
+      <Filter>Network\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="RpcMethods\TurnOnLights.cpp">
       <Filter>RpcMethods</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,7 +34,7 @@
     <ClInclude Include="Network\RpcParamList.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="RpcMethods\TurnOn.h">
+    <ClInclude Include="RpcMethods\TurnOnLights.h">
       <Filter>RpcMethods</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,6 +44,9 @@
     </Filter>
     <Filter Include="RpcMethods">
       <UniqueIdentifier>{c684cd84-6631-4725-8b58-c8f8c98f91e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network\Linux">
+      <UniqueIdentifier>{08e372c9-55fe-43a9-b759-06cb98781cf1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
