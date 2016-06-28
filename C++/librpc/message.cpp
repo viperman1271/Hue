@@ -1,4 +1,4 @@
-#include "message.h"
+#include <xmlrpc/message.h>
 
 namespace xmlrpc
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Message.h"
+#include <xmlrpc/message.h>
 
-class StatusMessage : public Message
+class StatusMessage : public xmlrpc::message
 {
 public:
 	enum class ID
@@ -17,8 +17,8 @@ public:
 
 	ID GetMessageID() const { return m_id; }
 
-	bool operator==(const Message& rhs) const override;
-	bool operator==(const Message* rhs) const override;
+	bool operator==(const xmlrpc::message& rhs) const override;
+	bool operator==(const xmlrpc::message* rhs) const override;
 
 	const std::string& GetMsgStr() const { return s_msg; };
 protected:

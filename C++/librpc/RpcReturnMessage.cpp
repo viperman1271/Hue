@@ -2,9 +2,9 @@
 
 std::string RpcReturnMessage::s_msg = "rpc_return_val";
 
-RpcReturnMessage::RpcReturnMessage(RpcValue& value)
-	: m_type(value.GetType())
-	, m_value(value.GetValue())
+RpcReturnMessage::RpcReturnMessage(xmlrpc::value& value)
+	: m_type(value.get_type())
+	, m_value(value.get_value())
 {
 
 }

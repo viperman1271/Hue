@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Message.h"
+#include <xmlrpc/message.h>
 
-class RpcCallMessage : public Message
+class RpcCallMessage : public xmlrpc::message
 {
 public:
 	const std::string& GetMsgStr() const { return s_msg; };

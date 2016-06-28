@@ -9,5 +9,27 @@
     <ClInclude Include="include\xmlrpc\registry.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
+    <ClInclude Include="RpcCallMessage.h" />
+    <ClInclude Include="RpcReturnMessage.h" />
+    <ClInclude Include="RpcValue.h" />
+    <ClInclude Include="StatusMessage.h" />
+    <ClInclude Include="include\xmlrpc\message.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\method.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\param_list.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\value.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="message.cpp" />
+    <ClCompile Include="RpcCallMessage.cpp" />
+    <ClCompile Include="RpcReturnMessage.cpp" />
+    <ClCompile Include="StatusMessage.cpp" />
   </ItemGroup>
 </Project>

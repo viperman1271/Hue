@@ -55,7 +55,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\librpc\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -79,7 +79,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\librpc\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WIN32;WINDOWS;CURL_STATICLIB;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>

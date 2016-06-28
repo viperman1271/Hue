@@ -2,6 +2,8 @@
 
 #include "Network/TcpServer.h"
 
+#include <xmlrpc/message.h>
+
 class RpcMethod;
 class RpcValue;
 class Daemon;
@@ -17,7 +19,7 @@ public:
 	Daemon* GetDaemon() const { return m_daemon; }
 
 protected:
-	bool HandleMessage(TcpServerThreadInfo* threadInfo, Message* msg) override;
+	bool HandleMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg) override;
 
 private:
 	bool HandleRpcCall(const std::string& function, RpcValue& value);

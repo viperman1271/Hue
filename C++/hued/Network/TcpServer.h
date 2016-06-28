@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Message.h"
+#include <xmlrpc/message.h>
 
 #include <thread>
 #include <map>
@@ -49,13 +49,13 @@ public:
 	static void* ClientThread(void* ptr);
 
 protected:
-	virtual bool HandleMessage(TcpServerThreadInfo* threadInfo, Message* msg);
-	virtual void TransmitMessage(TcpServerThreadInfo* threadInfo, Message* msg);
+	virtual bool HandleMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg);
+	virtual void TransmitMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg);
 
 private:
 
-	Message* CreateMessage(const char* buffer);
+	xmlrpc::message* CreateMessage(const char* buffer);
 
-	std::map<std::string, std::function<Message*(void)>> m_messages;
+	std::map<std::string, std::function<xmlrpc::message*(void)>> m_messages;
 	std::vector<TcpServerThreadInfo*> m_clientThreads;
 };

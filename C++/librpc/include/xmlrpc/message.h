@@ -15,8 +15,8 @@ public:
 
 	const std::string& GetRawMsg() const { return m_message; }
 
-	virtual bool operator==(const Message& rhs) const;
-	virtual bool operator==(const Message* rhs) const;
+	virtual bool operator==(const message& rhs) const;
+	virtual bool operator==(const message* rhs) const;
 
 	virtual const std::string& GetMsgStr() const = 0;
 protected:

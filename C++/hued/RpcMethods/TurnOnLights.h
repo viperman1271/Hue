@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Network/RpcMethod.h"
+#include <xmlrpc/method.h>
 
-class TurnOnLightsRpcMethod : RpcMethod
+class TurnOnLightsRpcMethod : xmlrpc::method
 {
-	using super = RpcMethod;
+	using super = xmlrpc::method;
 public:
 	TurnOnLightsRpcMethod();
-	void Execute(RpcParamList const& paramList, RpcValue& returnVal) override;
+	void execute(xmlrpc::param_list const& paramList, xmlrpc::value& returnVal) override;
 };

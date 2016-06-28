@@ -15,12 +15,12 @@ StatusMessage::StatusMessage(ID eMsgId)
 
 }
 
-bool StatusMessage::operator==(const Message* rhs) const
+bool StatusMessage::operator==(const xmlrpc::message* rhs) const
 {
 	return GetMsgStr() == rhs->GetMsgStr() && dynamic_cast<const StatusMessage*>(rhs)->m_id == m_id;
 }
 
-bool StatusMessage::operator==(const Message& rhs) const
+bool StatusMessage::operator==(const xmlrpc::message& rhs) const
 {
 	return this->operator==(&rhs);
 }

@@ -1,39 +1,44 @@
 #pragma once
 
+#pragma once
+
 #include <string>
 #include <vector>
 #include <type_traits>
 #include <typeinfo>
 
-class RpcValue
+namespace xmlrpc
+{
+class value
 {
 public:
-	RpcValue()
-		: m_rawValue(nullptr)
-	{
+	value();
 
-	}
-
-	const std::string& GetType() const { return m_type; }
-	const std::string& GetValue() const { return m_value; }
+	const std::string& get_type() const { return m_type; }
+	const std::string& get_value() const { return m_value; }
 
 	template<class T>
-	void SetType()
+	void set_type()
 	{
+		static_assert(std::is_pod<T>::value, "POD types only");
+		
 		m_type = typeid(T).name();
 	}
 
 
 	template<class T>
-	bool IsSameType() const
+	bool is_same_type() const
 	{
+		static_assert(std::is_pod<T>::value, "POD types only");
+
 		return m_type == typeid(T).name();
 	}
 
 	template<class T>
-	bool GetValue(T& val) const
+	bool get_value(T& val) const
 	{
 		static_assert(std::is_pod<T>::value, "POD types only");
+
 		if (typeid(T).name() != m_type)
 			return false;
 
@@ -43,18 +48,22 @@ public:
 	}
 
 	template<class T>
-	void SetValue(T& val)
+	void set_value(T& val)
 	{
+		static_assert(std::is_pod<T>::value, "POD types only");
+
 		m_rawValue = malloc(sizeof(T));
 		memcpy(m_rawValue, &val, sizeof(T));
 		m_type = typeid(T).name();
 	}
 
 	template<class T>
-	static RpcValue* Create(T& value)
+	static value* create(T& in_value)
 	{
-		RpcValue* r = new RpcValue();
-		r->SetValue<T>(value);
+		static_assert(std::is_pod<T>::value, "POD types only");
+
+		value* r = new value();
+		r->set_value<T>(in_value);
 		return r;
 	}
 private:
@@ -62,5 +71,4 @@ private:
 	std::string m_type;
 	void* m_rawValue;
 };
-
-using RpcParamList = std::vector<RpcValue*>;
+} //xmlrpc

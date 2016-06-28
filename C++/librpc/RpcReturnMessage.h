@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Message.h"
-#include "RpcValue.h"
+#include <xmlrpc/message.h>
+#include <xmlrpc/value.h>
 
-class RpcReturnMessage : public Message
+class RpcReturnMessage : public xmlrpc::message
 {
 public:
-	RpcReturnMessage(RpcValue& value);
+	RpcReturnMessage(xmlrpc::value& value);
 
 	const std::string& GetMsgStr() const { return s_msg; };
 	const std::string& GetType() const { return m_type; }

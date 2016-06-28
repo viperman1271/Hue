@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)\include;$(ProjectDir)..\libhue;$(ProjectDir)..\libhue\include;$(ProjectDir)..\libcurl\include;$(ProjectDir)..\JsonCpp\include;$(ProjectDir)..\tinyxml2;$(ProjectDir)..\librpc\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -115,18 +115,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\xmlrpc\message.h" />
+    <ClInclude Include="include\xmlrpc\method.h" />
+    <ClInclude Include="include\xmlrpc\param_list.h" />
+    <ClInclude Include="include\xmlrpc\registration_helpers.h" />
     <ClInclude Include="include\xmlrpc\registry.h" />
-    <ClInclude Include="message.h" />
+    <ClInclude Include="include\xmlrpc\smart_ptr.h" />
+    <ClInclude Include="include\xmlrpc\value.h" />
     <ClInclude Include="RpcCallMessage.h" />
     <ClInclude Include="RpcReturnMessage.h" />
-    <ClInclude Include="RpcValue.h" />
     <ClInclude Include="StatusMessage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="message.cpp" />
+    <ClCompile Include="method.cpp" />
+    <ClCompile Include="registry.cpp" />
     <ClCompile Include="RpcCallMessage.cpp" />
     <ClCompile Include="RpcReturnMessage.cpp" />
     <ClCompile Include="StatusMessage.cpp" />
+    <ClCompile Include="value.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

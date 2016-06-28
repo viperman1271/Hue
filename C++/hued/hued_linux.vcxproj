@@ -183,8 +183,6 @@
     <ClCompile Include="Network\TcpServer.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
-    <ClInclude Include="Network\RpcMethod.h" />
-    <ClInclude Include="Network\RpcParamList.h" />
     <ClInclude Include="Network\RpcServer.h" />
     <ClInclude Include="Network\TcpServer.h" />
     <ClInclude Include="PresenceFile.h" />

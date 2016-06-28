@@ -28,12 +28,6 @@
     <ClInclude Include="Network\RpcServer.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\RpcMethod.h">
-      <Filter>Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\RpcParamList.h">
-      <Filter>Network</Filter>
-    </ClInclude>
     <ClInclude Include="RpcMethods\TurnOnLights.h">
       <Filter>RpcMethods</Filter>
     </ClInclude>
