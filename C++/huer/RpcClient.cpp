@@ -9,21 +9,22 @@
 #define DEFAULT_BUFLEN 4096
 #define DEFAULT_PORT "8888"
 
-void RpcClient::Run()
+RpcClient::RpcClient()
+	: m_socket(INVALID_SOCKET)
+{
+
+}
+
+void RpcClient::Init()
 {
 	WSADATA wsaData;
-	SOCKET ConnectSocket = INVALID_SOCKET;
-	struct addrinfo *result = NULL,
-		*ptr = NULL,
-		hints;
-	char *sendbuf = "this is a test";
-	char recvbuf[DEFAULT_BUFLEN];
+	struct addrinfo* result = nullptr, *ptr = nullptr, hints;
 	int iResult;
-	int recvbuflen = DEFAULT_BUFLEN;
 
 	// Initialize Winsock
 	iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-	if (iResult != 0) {
+	if (iResult != 0) 
+	{
 		printf("WSAStartup failed with error: %d\n", iResult);
 		return;
 	}
@@ -35,29 +36,31 @@ void RpcClient::Run()
 
 	// Resolve the server address and port
 	iResult = getaddrinfo("raspbian-download", DEFAULT_PORT, &hints, &result);
-	if (iResult != 0) {
+	if (iResult != 0) 
+	{
 		printf("getaddrinfo failed with error: %d\n", iResult);
 		WSACleanup();
 		return;
 	}
 
 	// Attempt to connect to an address until one succeeds
-	for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
-
+	for (ptr = result; ptr != NULL; ptr = ptr->ai_next) 
+	{
 		// Create a SOCKET for connecting to server
-		ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype,
-			ptr->ai_protocol);
-		if (ConnectSocket == INVALID_SOCKET) {
+		m_socket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
+		if (m_socket == INVALID_SOCKET) 
+		{
 			printf("socket failed with error: %ld\n", WSAGetLastError());
 			WSACleanup();
 			return;
 		}
 
 		// Connect to server.
-		iResult = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
-		if (iResult == SOCKET_ERROR) {
-			closesocket(ConnectSocket);
-			ConnectSocket = INVALID_SOCKET;
+		iResult = connect(m_socket, ptr->ai_addr, (int)ptr->ai_addrlen);
+		if (iResult == SOCKET_ERROR) 
+		{
+			closesocket(m_socket);
+			m_socket = INVALID_SOCKET;
 			continue;
 		}
 		break;
@@ -65,14 +68,23 @@ void RpcClient::Run()
 
 	freeaddrinfo(result);
 
-	if (ConnectSocket == INVALID_SOCKET) {
+	if (m_socket == INVALID_SOCKET) 
+	{
 		printf("Unable to connect to server!\n");
 		WSACleanup();
 		return;
 	}
+}
 
+void RpcClient::Receive()
+{
+
+}
+
+void RpcClient::Run()
+{
 	// Send an initial buffer
-	iResult = send(ConnectSocket, sendbuf, (int)strlen(sendbuf), 0);
+	/*iResult = send(ConnectSocket, sendbuf, (int)strlen(sendbuf), 0);
 	if (iResult == SOCKET_ERROR) {
 		printf("send failed with error: %d\n", WSAGetLastError());
 		closesocket(ConnectSocket);
@@ -89,12 +101,15 @@ void RpcClient::Run()
 		closesocket(ConnectSocket);
 		WSACleanup();
 		return;
-	}
+	}*/
 
 	// Receive until the peer closes the connection
-	do {
+	char recvbuf[DEFAULT_BUFLEN];
+	auto recvbuflen = DEFAULT_BUFLEN;
+	int iResult;
 
-		iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
+	do {
+		iResult = recv(m_socket, recvbuf, recvbuflen, 0);
 		if (iResult > 0)
 			printf("Bytes received: %d\n", iResult);
 		else if (iResult == 0)
@@ -105,6 +120,6 @@ void RpcClient::Run()
 	} while (iResult > 0);
 
 	// cleanup
-	closesocket(ConnectSocket);
+	closesocket(m_socket);
 	WSACleanup();
 }
