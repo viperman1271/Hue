@@ -8,13 +8,13 @@
     <ClInclude Include="include\xmlrpc\registry.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-    <ClInclude Include="Message2.h" />
+    <ClInclude Include="message.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RpcCallMessage.cpp" />
     <ClCompile Include="RpcReturnMessage.cpp" />
     <ClCompile Include="StatusMessage.cpp" />
-    <ClCompile Include="Message2.cpp" />
+    <ClCompile Include="message.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="xmlrpc">

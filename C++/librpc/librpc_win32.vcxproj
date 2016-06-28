@@ -116,14 +116,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\xmlrpc\registry.h" />
-    <ClInclude Include="Message2.h" />
+    <ClInclude Include="message.h" />
     <ClInclude Include="RpcCallMessage.h" />
     <ClInclude Include="RpcReturnMessage.h" />
     <ClInclude Include="RpcValue.h" />
     <ClInclude Include="StatusMessage.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Message2.cpp" />
+    <ClCompile Include="message.cpp" />
     <ClCompile Include="RpcCallMessage.cpp" />
     <ClCompile Include="RpcReturnMessage.cpp" />
     <ClCompile Include="StatusMessage.cpp" />
