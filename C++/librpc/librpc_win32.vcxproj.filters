@@ -2,15 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="StatusMessage.h" />
-    <ClInclude Include="Message.h" />
     <ClInclude Include="RpcCallMessage.h" />
     <ClInclude Include="RpcReturnMessage.h" />
     <ClInclude Include="RpcValue.h" />
+    <ClInclude Include="include\xmlrpc\registry.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="Message2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Message.cpp" />
     <ClCompile Include="RpcCallMessage.cpp" />
     <ClCompile Include="RpcReturnMessage.cpp" />
     <ClCompile Include="StatusMessage.cpp" />
+    <ClCompile Include="Message2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="xmlrpc">
+      <UniqueIdentifier>{d7560e43-6bdb-4b3c-8ed7-13f1804bf671}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

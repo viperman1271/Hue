@@ -69,6 +69,7 @@
     <ClCompile Include="StatusMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\xmlrpc\registry.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="RpcCallMessage.h" />
     <ClInclude Include="RpcReturnMessage.h" />

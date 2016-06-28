@@ -3,10 +3,12 @@
 #include <string>
 #include <tinyxml2.h>
 
-class Message
+namespace xmlrpc
+{
+class message
 {
 public:
-	virtual ~Message();
+	virtual ~message();
 
 	void Serialize();
 	void Deserialize(const std::string& in_pszMessage);
@@ -25,3 +27,4 @@ private:
 	tinyxml2::XMLDocument m_doc;
 	std::string m_message;
 };
+}

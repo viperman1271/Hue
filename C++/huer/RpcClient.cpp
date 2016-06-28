@@ -17,6 +17,9 @@ RpcClient::RpcClient()
 
 void RpcClient::Init()
 {
+	if (m_socket != INVALID_SOCKET)
+		return;
+
 	WSADATA wsaData;
 	struct addrinfo* result = nullptr, *ptr = nullptr, hints;
 	int iResult;
@@ -78,48 +81,81 @@ void RpcClient::Init()
 
 void RpcClient::Receive()
 {
-
-}
-
-void RpcClient::Run()
-{
-	// Send an initial buffer
-	/*iResult = send(ConnectSocket, sendbuf, (int)strlen(sendbuf), 0);
-	if (iResult == SOCKET_ERROR) {
-		printf("send failed with error: %d\n", WSAGetLastError());
-		closesocket(ConnectSocket);
-		WSACleanup();
+	if (m_socket == INVALID_SOCKET)
 		return;
-	}
 
-	printf("Bytes Sent: %ld\n", iResult);
-
-	// shutdown the connection since no more data will be sent
-	iResult = shutdown(ConnectSocket, SD_SEND);
-	if (iResult == SOCKET_ERROR) {
-		printf("shutdown failed with error: %d\n", WSAGetLastError());
-		closesocket(ConnectSocket);
-		WSACleanup();
-		return;
-	}*/
-
-	// Receive until the peer closes the connection
 	char recvbuf[DEFAULT_BUFLEN];
 	auto recvbuflen = DEFAULT_BUFLEN;
 	int iResult;
 
-	do {
+	do
+	{
 		iResult = recv(m_socket, recvbuf, recvbuflen, 0);
 		if (iResult > 0)
+		{
 			printf("Bytes received: %d\n", iResult);
+		}
 		else if (iResult == 0)
+		{
 			printf("Connection closed\n");
+		}
 		else
+		{
 			printf("recv failed with error: %d\n", WSAGetLastError());
-
+		}
 	} while (iResult > 0);
+}
 
-	// cleanup
+void RpcClient::Send(const char* sendbuf)
+{
+	if (m_socket == INVALID_SOCKET)
+		return;
+
+	// Send an initial buffer
+	auto iResult = send(m_socket, sendbuf, (int)strlen(sendbuf), 0);
+	if (iResult == SOCKET_ERROR)
+	{
+		printf("send failed with error: %d\n", WSAGetLastError());
+		closesocket(m_socket);
+		WSACleanup();
+		return;
+	}
+
+	// shutdown the connection since no more data will be sent
+	iResult = shutdown(m_socket, SD_SEND);
+	if (iResult == SOCKET_ERROR)
+	{
+		printf("shutdown failed with error: %d\n", WSAGetLastError());
+		closesocket(m_socket);
+		WSACleanup();
+		return;
+	}
+}
+
+void RpcClient::Close()
+{
+	if (m_socket == INVALID_SOCKET)
+		return;
+
 	closesocket(m_socket);
 	WSACleanup();
+	m_socket = INVALID_SOCKET;
+}
+
+Message* TcpServer::CreateMessage(const char* buffer)
+{
+	tinyxml2::XMLDocument doc;
+	tinyxml2::XMLError err = doc.Parse(buffer);
+	if (err != tinyxml2::XML_SUCCESS)
+	{
+		return nullptr;
+	}
+
+	if (tinyxml2::XMLElement* rootElem = doc.FirstChildElement("message"))
+	{
+		std::string type = rootElem->Attribute("type");
+		return m_messages[type]();
+	}
+
+	return nullptr;
 }

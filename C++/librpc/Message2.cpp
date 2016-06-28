@@ -1,11 +1,13 @@
-#include "Message.h"
+#include "message.h"
 
-Message::~Message()
+namespace xmlrpc
+{
+message::~message()
 {
 
 }
 
-void Message::Serialize()
+void message::Serialize()
 {
 	tinyxml2::XMLElement* rootElem = m_doc.NewElement("message");
 	rootElem->SetAttribute("type", GetMsgStr().c_str());
@@ -17,7 +19,7 @@ void Message::Serialize()
 	m_message = printer.CStr();
 }
 
-void Message::Deserialize(const std::string& in_pszMessage)
+void message::Deserialize(const std::string& in_pszMessage)
 {
 	m_message = in_pszMessage;
 
@@ -33,13 +35,13 @@ void Message::Deserialize(const std::string& in_pszMessage)
 	}
 }
 
-bool Message::operator==(const Message* rhs) const
+bool message::operator==(const message* rhs) const
 {
 	return GetMsgStr() == rhs->GetMsgStr();
 }
 
-bool Message::operator==(const Message& rhs) const
+bool message::operator==(const message& rhs) const
 {
 	return this->operator==(&rhs);
 }
-
+}
