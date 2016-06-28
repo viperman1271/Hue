@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="StatusMessage.h" />
-    <ClInclude Include="RpcCallMessage.h" />
-    <ClInclude Include="RpcReturnMessage.h" />
     <ClInclude Include="include\xmlrpc\registry.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
@@ -25,19 +22,40 @@
     <ClInclude Include="include\xmlrpc\registration_helpers.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
+    <ClInclude Include="StatusMessage.h">
+      <Filter>messages</Filter>
+    </ClInclude>
+    <ClInclude Include="RpcCallMessage.h">
+      <Filter>messages</Filter>
+    </ClInclude>
+    <ClInclude Include="RpcReturnMessage.h">
+      <Filter>messages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\registry.hpp">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RpcCallMessage.cpp" />
-    <ClCompile Include="RpcReturnMessage.cpp" />
-    <ClCompile Include="StatusMessage.cpp" />
     <ClCompile Include="message.cpp" />
     <ClCompile Include="registry.cpp" />
     <ClCompile Include="method.cpp" />
     <ClCompile Include="value.cpp" />
+    <ClCompile Include="RpcCallMessage.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
+    <ClCompile Include="RpcReturnMessage.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusMessage.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="xmlrpc">
       <UniqueIdentifier>{d7560e43-6bdb-4b3c-8ed7-13f1804bf671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="messages">
+      <UniqueIdentifier>{3b6a89e4-6fcb-4d00-b2df-24dcfb24f520}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

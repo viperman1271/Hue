@@ -120,6 +120,7 @@
     <ClInclude Include="include\xmlrpc\param_list.h" />
     <ClInclude Include="include\xmlrpc\registration_helpers.h" />
     <ClInclude Include="include\xmlrpc\registry.h" />
+    <ClInclude Include="include\xmlrpc\registry.hpp" />
     <ClInclude Include="include\xmlrpc\smart_ptr.h" />
     <ClInclude Include="include\xmlrpc\value.h" />
     <ClInclude Include="RpcCallMessage.h" />

@@ -1,4 +1,5 @@
 #include <xmlrpc/registry.h>
+#include <iostream>
 
 namespace xmlrpc
 {
@@ -12,7 +13,6 @@ void registry::addMethod(const std::string& methodName, xmlrpc::methodPtr method
 
 void registry::registerMessage(const std::string& messageName, std::function<message*(void)>& function)
 {
-
 }
 
 message* registry::createMessage(const std::string& data) const
