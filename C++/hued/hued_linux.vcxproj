@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -100,7 +100,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -114,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -156,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
-      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>/home/pi/projects/libhue/;/home/pi/projects/libhue/include;/home/pi/projects/hue/;/home/pi/projects/hued/;/home/pi/projects/librpc/;/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LINUX;_UNIX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <RemotePostBuildEvent>
@@ -172,10 +172,11 @@
     <ClCompile Include="Daemon.cpp" />
     <ClCompile Include="IniFile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="methods\turn_off_lights.cpp" />
+    <ClCompile Include="methods\turn_on_lights.cpp" />
     <ClCompile Include="Network\Linux\TcpServerLinux.cpp" />
     <ClCompile Include="Network\RpcServer.cpp" />
     <ClCompile Include="PresenceFile.cpp" />
-    <ClCompile Include="RpcMethods\TurnOnLights.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daemon.h" />
@@ -183,10 +184,11 @@
     <ClCompile Include="Network\TcpServer.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
+    <ClInclude Include="methods\turn_off_lights.h" />
+    <ClInclude Include="methods\turn_on_lights.h" />
     <ClInclude Include="Network\RpcServer.h" />
     <ClInclude Include="Network\TcpServer.h" />
     <ClInclude Include="PresenceFile.h" />
-    <ClInclude Include="RpcMethods\TurnOnLights.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

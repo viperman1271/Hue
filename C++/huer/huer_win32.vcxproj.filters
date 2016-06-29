@@ -3,8 +3,25 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RpcClient.cpp" />
+    <ClCompile Include="methods\turn_on_lights.cpp">
+      <Filter>methods</Filter>
+    </ClCompile>
+    <ClCompile Include="methods\turn_off_lights.cpp">
+      <Filter>methods</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RpcClient.h" />
+    <ClInclude Include="methods\turn_on_lights.h">
+      <Filter>methods</Filter>
+    </ClInclude>
+    <ClInclude Include="methods\turn_off_lights.h">
+      <Filter>methods</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="methods">
+      <UniqueIdentifier>{4fd7adde-d1cd-4837-90ef-027edfb8541b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

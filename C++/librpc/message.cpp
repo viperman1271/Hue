@@ -2,12 +2,19 @@
 
 namespace xmlrpc
 {
+const std::string message::ms_blankMessage = "";
+
+message::message()
+{
+
+}
+
 message::~message()
 {
 
 }
 
-void message::Serialize()
+void message::serialize()
 {
 	tinyxml2::XMLElement* rootElem = m_doc.NewElement("message");
 	rootElem->SetAttribute("type", GetMsgStr().c_str());
@@ -17,13 +24,14 @@ void message::Serialize()
 	tinyxml2::XMLPrinter printer;
 	m_doc.Print(&printer);
 	m_message = printer.CStr();
+	m_message += "\0";
 }
 
-void message::Deserialize(const std::string& in_pszMessage)
+void message::deserialize(const char* in_pszMessage, size_t in_uBytes)
 {
 	m_message = in_pszMessage;
 
-	tinyxml2::XMLError err = m_doc.Parse(in_pszMessage.c_str());
+	tinyxml2::XMLError err = m_doc.Parse(in_pszMessage, in_uBytes);
 	if (err != tinyxml2::XML_SUCCESS)
 	{
 		return;

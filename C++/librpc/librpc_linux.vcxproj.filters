@@ -4,15 +4,32 @@
     <Filter Include="xmlrpc">
       <UniqueIdentifier>{9355ae77-5614-41c8-9037-8b14eb9213c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="messages">
+      <UniqueIdentifier>{5ad378eb-652b-41f1-92d3-ffedcfadefc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rpc-messages">
+      <UniqueIdentifier>{6b0fcf89-61f4-472e-8c4d-5a11579c8440}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\xmlrpc\registry.h">
+    <ClCompile Include="value.cpp" />
+    <ClCompile Include="message.cpp" />
+    <ClCompile Include="method.cpp" />
+    <ClCompile Include="registry.cpp" />
+    <ClCompile Include="remote_call.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
+    <ClCompile Include="return_value.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
+    <ClCompile Include="status.cpp">
+      <Filter>messages</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\xmlrpc\value.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-    <ClInclude Include="RpcCallMessage.h" />
-    <ClInclude Include="RpcReturnMessage.h" />
-    <ClInclude Include="RpcValue.h" />
-    <ClInclude Include="StatusMessage.h" />
     <ClInclude Include="include\xmlrpc\message.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
@@ -22,14 +39,29 @@
     <ClInclude Include="include\xmlrpc\param_list.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-    <ClInclude Include="include\xmlrpc\value.h">
+    <ClInclude Include="include\xmlrpc\registration_helpers.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="message.cpp" />
-    <ClCompile Include="RpcCallMessage.cpp" />
-    <ClCompile Include="RpcReturnMessage.cpp" />
-    <ClCompile Include="StatusMessage.cpp" />
+    <ClInclude Include="include\xmlrpc\registry.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\registry.hpp">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\serializer.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\serializer.hpp">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\return_value.h">
+      <Filter>rpc-messages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\status.h">
+      <Filter>rpc-messages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\remote_call.h">
+      <Filter>rpc-messages</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

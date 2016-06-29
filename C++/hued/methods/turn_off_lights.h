@@ -2,10 +2,10 @@
 
 #include <xmlrpc/method.h>
 
-class TurnOnLightsRpcMethod : xmlrpc::method
+class turn_off_lights : public xmlrpc::method
 {
 	using super = xmlrpc::method;
 public:
-	TurnOnLightsRpcMethod();
+	turn_off_lights();
 	void execute(xmlrpc::param_list const& paramList, xmlrpc::value& returnVal) override;
 };

@@ -26,59 +26,83 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="message.cpp" />
+    <ClCompile Include="method.cpp" />
+    <ClCompile Include="registry.cpp" />
+    <ClCompile Include="remote_call.cpp" />
+    <ClCompile Include="return_value.cpp" />
+    <ClCompile Include="status.cpp" />
+    <ClCompile Include="value.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\rpc-messages\remote_call.h" />
+    <ClInclude Include="include\rpc-messages\return_value.h" />
+    <ClInclude Include="include\rpc-messages\status.h" />
+    <ClInclude Include="include\xmlrpc\message.h" />
+    <ClInclude Include="include\xmlrpc\method.h" />
+    <ClInclude Include="include\xmlrpc\param_list.h" />
+    <ClInclude Include="include\xmlrpc\registration_helpers.h" />
+    <ClInclude Include="include\xmlrpc\registry.h" />
+    <ClInclude Include="include\xmlrpc\registry.hpp" />
+    <ClInclude Include="include\xmlrpc\serializer.h" />
+    <ClInclude Include="include\xmlrpc\serializer.hpp" />
+    <ClInclude Include="include\xmlrpc\value.h" />
+  </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <Link>
       <LibraryDependencies>tinyxml2</LibraryDependencies>
       <AdditionalLibraryDirectories>/home/pi/projects/libhue/bin/ARM/$(ConfigurationName)/</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>/home/pi/projects/librpc/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="message.cpp" />
-    <ClCompile Include="RpcCallMessage.cpp" />
-    <ClCompile Include="RpcReturnMessage.cpp" />
-    <ClCompile Include="StatusMessage.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\xmlrpc\message.h" />
-    <ClInclude Include="include\xmlrpc\method.h" />
-    <ClInclude Include="include\xmlrpc\param_list.h" />
-    <ClInclude Include="include\xmlrpc\registry.h" />
-    <ClInclude Include="include\xmlrpc\value.h" />
-    <ClInclude Include="RpcCallMessage.h" />
-    <ClInclude Include="RpcReturnMessage.h" />
-    <ClInclude Include="RpcValue.h" />
-    <ClInclude Include="StatusMessage.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{e0dcb074-1c3d-4fc8-b828-f378956d1adb}</ProjectGuid>
     <Keyword>Linux</Keyword>

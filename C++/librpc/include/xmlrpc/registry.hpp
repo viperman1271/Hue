@@ -1,3 +1,4 @@
+#include <xmlrpc/serializer.h>
 namespace xmlrpc
 {
 template<class... T>

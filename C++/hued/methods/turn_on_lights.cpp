@@ -1,16 +1,16 @@
-#include "TurnOnLights.h"
+#include "turn_on_lights.h"
 #include "Daemon.h"
 #include "Network/RpcServer.h"
 
 #include <HueBridge.h>
 
-TurnOnLightsRpcMethod::TurnOnLightsRpcMethod()
+turn_on_lights::turn_on_lights()
 	: super("", "Bridge.TurnOn")
 {
 
 }
 
-void TurnOnLightsRpcMethod::execute(xmlrpc::param_list const& paramList, xmlrpc::value& returnVal)
+void turn_on_lights::execute(xmlrpc::param_list const& paramList, xmlrpc::value& returnVal)
 {
 	RpcServer* rpcServer;
 	if(paramList[0]->get_value(rpcServer))

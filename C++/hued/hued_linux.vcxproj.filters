@@ -14,8 +14,11 @@
     <ClCompile Include="Network\Linux\TcpServerLinux.cpp">
       <Filter>Network\Linux</Filter>
     </ClCompile>
-    <ClCompile Include="RpcMethods\TurnOnLights.cpp">
-      <Filter>RpcMethods</Filter>
+    <ClCompile Include="methods\turn_on_lights.cpp">
+      <Filter>methods</Filter>
+    </ClCompile>
+    <ClCompile Include="methods\turn_off_lights.cpp">
+      <Filter>methods</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -28,19 +31,22 @@
     <ClInclude Include="Network\RpcServer.h">
       <Filter>Network</Filter>
     </ClInclude>
-    <ClInclude Include="RpcMethods\TurnOnLights.h">
-      <Filter>RpcMethods</Filter>
+    <ClInclude Include="methods\turn_on_lights.h">
+      <Filter>methods</Filter>
+    </ClInclude>
+    <ClInclude Include="methods\turn_off_lights.h">
+      <Filter>methods</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Network">
       <UniqueIdentifier>{72d9b549-8030-4645-8171-bedff930b4cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="RpcMethods">
-      <UniqueIdentifier>{c684cd84-6631-4725-8b58-c8f8c98f91e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Network\Linux">
       <UniqueIdentifier>{08e372c9-55fe-43a9-b759-06cb98781cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="methods">
+      <UniqueIdentifier>{09a17c77-1135-4cbb-bb86-b865f5ada2f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

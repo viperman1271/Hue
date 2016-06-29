@@ -2,7 +2,6 @@
 
 #include <xmlrpc/param_list.h>
 #include <xmlrpc/value.h>
-#include <xmlrpc/smart_ptr.h>
 
 #include <string>
 #include <memory>
@@ -22,6 +21,13 @@ protected:
 private:
 	const std::string m_help;
 	const std::string m_name;
+};
+
+template<class return_type, class...args>
+class remote_method
+{
+public:
+	virtual return_type call(args... arguments) = 0;
 };
 
 using methodPtr = std::shared_ptr<xmlrpc::method>;

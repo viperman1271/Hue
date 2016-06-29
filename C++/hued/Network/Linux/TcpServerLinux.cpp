@@ -9,7 +9,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-#include "StatusMessage.h"
+#include <rpc-messages/status.h>
 
 void* get_in_addr(struct sockaddr * sa)
 {
@@ -100,17 +100,17 @@ void* TcpServer::ClientThread(void* ptr)
 	inet_ntop(client_addr.ss_family, get_in_addr((struct sockaddr *) &client_addr), s, sizeof s);
 	printf("I am now connected to %s \n", s);
 
-	Message* msg = nullptr;
-	int status;
+	xmlrpc::message* msg = nullptr;
+	int networkStatus;
 	{
-		msg = new StatusMessage(StatusMessage::ID::WELCOME);
-		msg->Serialize();
-		status = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		msg = new status(status::ID::WELCOME);
+		msg->serialize();
+		networkStatus = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
 	bool bSocketError = false;
-	if (status != -1)
+	if (networkStatus != -1)
 	{
 		char buffer[4096];
 		while (true)
@@ -124,8 +124,8 @@ void* TcpServer::ClientThread(void* ptr)
 			}
 			else
 			{
-				Message* message = tcpServer->CreateMessage(buffer);
-				message->Deserialize(buffer);
+				xmlrpc::message* message = tcpServer->CreateMessage(buffer, bytesRecv);
+				message->deserialize(buffer, bytesRecv);
 
 				bool result = tcpServer->HandleMessage(ti, message);
 				delete message;
@@ -137,9 +137,9 @@ void* TcpServer::ClientThread(void* ptr)
 	}
 	if(!bSocketError)
 	{
-		msg = new StatusMessage(StatusMessage::ID::CLOSE);
-		msg->Serialize();
-		status = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		msg = new status(status::ID::CLOSE);
+		msg->serialize();
+		networkStatus = send(ti->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
@@ -148,7 +148,7 @@ void* TcpServer::ClientThread(void* ptr)
 	return nullptr;
 }
 
-void TcpServer::TransmitMessage(TcpServerThreadInfo* threadInfo, Message* msg)
+void TcpServer::TransmitMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg)
 {
 	send(threadInfo->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 }

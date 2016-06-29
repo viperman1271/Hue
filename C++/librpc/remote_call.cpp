@@ -1,8 +1,19 @@
-#include "RpcCallMessage.h"
+#include <rpc-messages/remote_call.h>
 
-std::string RpcCallMessage::s_msg = "rpc_call";
+std::string remote_call::s_msg = "rpc_call";
 
-void RpcCallMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
+remote_call::remote_call(const std::string& remoteFunction)
+	: m_function(remoteFunction)
+{
+
+}
+
+remote_call::remote_call()
+{
+
+}
+
+void remote_call::Handle(tinyxml2::XMLElement* in_pXmlElement)
 {
 	tinyxml2::XMLElement* pFirstChildElement = in_pXmlElement->FirstChildElement();
 	if (strcmp(pFirstChildElement->Name(), s_msg.c_str()) == 0)
@@ -11,7 +22,7 @@ void RpcCallMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
 	}
 }
 
-void RpcCallMessage::Create(tinyxml2::XMLElement* in_pXmlElement) const
+void remote_call::Create(tinyxml2::XMLElement* in_pXmlElement) const
 {
 	tinyxml2::XMLElement* xmlElement = in_pXmlElement->GetDocument()->NewElement(s_msg.c_str());
 	

@@ -3,6 +3,7 @@
 #include "Network/TcpServer.h"
 
 #include <xmlrpc/message.h>
+#include <xmlrpc/registry.h>
 
 class RpcMethod;
 class RpcValue;
@@ -15,16 +16,17 @@ public:
 	RpcServer(Daemon* daemon);
 
 	void Run() override;
-	void RegisterFunction(RpcMethod* method);
 	Daemon* GetDaemon() const { return m_daemon; }
 
 protected:
 	bool HandleMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg) override;
+	virtual xmlrpc::message* CreateMessage(const char* buffer, size_t msgSize) override;
+private:
+	bool HandleRpcCall(const std::string& function, xmlrpc::value& value);
 
 private:
-	bool HandleRpcCall(const std::string& function, RpcValue& value);
-
-private:
-	std::map<std::string, RpcMethod*> m_rpcMethods;
+	//std::map<std::string, xmlrpc::methodPtr> m_rpcMethods;
 	Daemon* m_daemon;
+
+	xmlrpc::registry m_registry;
 };

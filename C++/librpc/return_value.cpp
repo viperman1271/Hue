@@ -1,15 +1,15 @@
-#include "RpcReturnMessage.h"
+#include <rpc-messages/return_value.h>
 
-std::string RpcReturnMessage::s_msg = "rpc_return_val";
+std::string return_value::s_msg = "rpc_return_val";
 
-RpcReturnMessage::RpcReturnMessage(xmlrpc::value& value)
+return_value::return_value(xmlrpc::value& value)
 	: m_type(value.get_type())
 	, m_value(value.get_value())
 {
 
 }
 
-void RpcReturnMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
+void return_value::Handle(tinyxml2::XMLElement* in_pXmlElement)
 {
 	tinyxml2::XMLElement* pFirstChildElement = in_pXmlElement->FirstChildElement();
 	if (strcmp(pFirstChildElement->Name(), s_msg.c_str()) == 0)
@@ -19,7 +19,7 @@ void RpcReturnMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
 	}
 }
 
-void RpcReturnMessage::Create(tinyxml2::XMLElement* in_pXmlElement) const
+void return_value::Create(tinyxml2::XMLElement* in_pXmlElement) const
 {
 	tinyxml2::XMLElement* xmlElement = in_pXmlElement->GetDocument()->NewElement(s_msg.c_str());
 

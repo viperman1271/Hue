@@ -16,23 +16,26 @@
     <ClInclude Include="include\xmlrpc\value.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-    <ClInclude Include="include\xmlrpc\smart_ptr.h">
-      <Filter>xmlrpc</Filter>
-    </ClInclude>
     <ClInclude Include="include\xmlrpc\registration_helpers.h">
       <Filter>xmlrpc</Filter>
     </ClInclude>
-    <ClInclude Include="StatusMessage.h">
-      <Filter>messages</Filter>
-    </ClInclude>
-    <ClInclude Include="RpcCallMessage.h">
-      <Filter>messages</Filter>
-    </ClInclude>
-    <ClInclude Include="RpcReturnMessage.h">
-      <Filter>messages</Filter>
-    </ClInclude>
     <ClInclude Include="include\xmlrpc\registry.hpp">
       <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\serializer.h">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlrpc\serializer.hpp">
+      <Filter>xmlrpc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\return_value.h">
+      <Filter>rpc-messages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\status.h">
+      <Filter>rpc-messages</Filter>
+    </ClInclude>
+    <ClInclude Include="include\rpc-messages\remote_call.h">
+      <Filter>rpc-messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -40,13 +43,13 @@
     <ClCompile Include="registry.cpp" />
     <ClCompile Include="method.cpp" />
     <ClCompile Include="value.cpp" />
-    <ClCompile Include="RpcCallMessage.cpp">
+    <ClCompile Include="remote_call.cpp">
       <Filter>messages</Filter>
     </ClCompile>
-    <ClCompile Include="RpcReturnMessage.cpp">
+    <ClCompile Include="return_value.cpp">
       <Filter>messages</Filter>
     </ClCompile>
-    <ClCompile Include="StatusMessage.cpp">
+    <ClCompile Include="status.cpp">
       <Filter>messages</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,6 +59,9 @@
     </Filter>
     <Filter Include="messages">
       <UniqueIdentifier>{3b6a89e4-6fcb-4d00-b2df-24dcfb24f520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rpc-messages">
+      <UniqueIdentifier>{211c1a2c-2477-45f3-8cb7-e759c68c3db0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

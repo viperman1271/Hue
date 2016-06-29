@@ -1,21 +1,21 @@
 #pragma once
 
 #include <xmlrpc/message.h>
-#include <xmlrpc/value.h>
 
-class RpcReturnMessage : public xmlrpc::message
+class remote_call : public xmlrpc::message
 {
 public:
-	RpcReturnMessage(xmlrpc::value& value);
+	remote_call(const std::string& remoteFunction);
+	remote_call();
 
 	const std::string& GetMsgStr() const { return s_msg; };
-	const std::string& GetType() const { return m_type; }
-	const std::string& GetValue() const { return m_value; }
+	const std::string& GetFunc() const { return m_function; }
+
+	void set_function(const std::string& function) { m_function = function; }
 protected:
 	void Handle(tinyxml2::XMLElement* in_pXmlElement) override;
 	void Create(tinyxml2::XMLElement* in_pXmlElement) const override;
 private:
 	static std::string s_msg;
-	std::string m_type;
-	std::string m_value;
+	std::string m_function;
 };

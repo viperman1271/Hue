@@ -115,25 +115,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\rpc-messages\remote_call.h" />
+    <ClInclude Include="include\rpc-messages\return_value.h" />
+    <ClInclude Include="include\rpc-messages\status.h" />
     <ClInclude Include="include\xmlrpc\message.h" />
     <ClInclude Include="include\xmlrpc\method.h" />
     <ClInclude Include="include\xmlrpc\param_list.h" />
     <ClInclude Include="include\xmlrpc\registration_helpers.h" />
     <ClInclude Include="include\xmlrpc\registry.h" />
     <ClInclude Include="include\xmlrpc\registry.hpp" />
-    <ClInclude Include="include\xmlrpc\smart_ptr.h" />
+    <ClInclude Include="include\xmlrpc\serializer.h" />
+    <ClInclude Include="include\xmlrpc\serializer.hpp" />
     <ClInclude Include="include\xmlrpc\value.h" />
-    <ClInclude Include="RpcCallMessage.h" />
-    <ClInclude Include="RpcReturnMessage.h" />
-    <ClInclude Include="StatusMessage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="message.cpp" />
     <ClCompile Include="method.cpp" />
     <ClCompile Include="registry.cpp" />
-    <ClCompile Include="RpcCallMessage.cpp" />
-    <ClCompile Include="RpcReturnMessage.cpp" />
-    <ClCompile Include="StatusMessage.cpp" />
+    <ClCompile Include="remote_call.cpp" />
+    <ClCompile Include="return_value.cpp" />
+    <ClCompile Include="status.cpp" />
     <ClCompile Include="value.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

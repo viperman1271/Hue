@@ -1,31 +1,31 @@
-#include "StatusMessage.h"
+#include <rpc-messages/status.h>
 #include <cassert>
 
-std::string StatusMessage::s_msg = "status";
+std::string status::s_msg = "status";
 
-StatusMessage::StatusMessage()
+status::status()
 	: m_id(ID::UNKNOWN)
 {
 
 }
 
-StatusMessage::StatusMessage(ID eMsgId)
+status::status(ID eMsgId)
 	: m_id(eMsgId)
 {
 
 }
 
-bool StatusMessage::operator==(const xmlrpc::message* rhs) const
+bool status::operator==(const xmlrpc::message* rhs) const
 {
-	return GetMsgStr() == rhs->GetMsgStr() && dynamic_cast<const StatusMessage*>(rhs)->m_id == m_id;
+	return GetMsgStr() == rhs->GetMsgStr() && dynamic_cast<const status*>(rhs)->m_id == m_id;
 }
 
-bool StatusMessage::operator==(const xmlrpc::message& rhs) const
+bool status::operator==(const xmlrpc::message& rhs) const
 {
 	return this->operator==(&rhs);
 }
 
-void StatusMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
+void status::Handle(tinyxml2::XMLElement* in_pXmlElement)
 {
 	tinyxml2::XMLElement* pFirstChildElement = in_pXmlElement->FirstChildElement();
 	if (strcmp(pFirstChildElement->Name(), s_msg.c_str()) == 0)
@@ -38,7 +38,7 @@ void StatusMessage::Handle(tinyxml2::XMLElement* in_pXmlElement)
 	}
 }
 
-void StatusMessage::Create(tinyxml2::XMLElement* in_pXmlElement) const
+void status::Create(tinyxml2::XMLElement* in_pXmlElement) const
 {
 	tinyxml2::XMLElement* xmlElement = in_pXmlElement->GetDocument()->NewElement(s_msg.c_str());
 	switch (m_id)

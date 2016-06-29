@@ -8,6 +8,7 @@
 
 #define DEFAULT_BUFLEN 4096
 #define DEFAULT_PORT "8888"
+#define DEFAULT_HOST "raspbian-download"
 
 RpcClient::RpcClient()
 	: m_socket(INVALID_SOCKET)
@@ -38,7 +39,7 @@ void RpcClient::Init()
 	hints.ai_protocol = IPPROTO_TCP;
 
 	// Resolve the server address and port
-	iResult = getaddrinfo("raspbian-download", DEFAULT_PORT, &hints, &result);
+	iResult = getaddrinfo(DEFAULT_HOST, DEFAULT_PORT, &hints, &result);
 	if (iResult != 0) 
 	{
 		printf("getaddrinfo failed with error: %d\n", iResult);
@@ -88,7 +89,7 @@ void RpcClient::Receive()
 	auto recvbuflen = DEFAULT_BUFLEN;
 	int iResult;
 
-	do
+	//do
 	{
 		iResult = recv(m_socket, recvbuf, recvbuflen, 0);
 		if (iResult > 0)
@@ -103,7 +104,7 @@ void RpcClient::Receive()
 		{
 			printf("recv failed with error: %d\n", WSAGetLastError());
 		}
-	} while (iResult > 0);
+	} //while (iResult  0);
 }
 
 void RpcClient::Send(const char* sendbuf)
@@ -132,6 +133,12 @@ void RpcClient::Send(const char* sendbuf)
 	}
 }
 
+void RpcClient::Send(xmlrpc::message* message)
+{
+	message->serialize();
+	Send(message->GetRawMsg().c_str());
+}
+
 void RpcClient::Close()
 {
 	if (m_socket == INVALID_SOCKET)
@@ -140,22 +147,4 @@ void RpcClient::Close()
 	closesocket(m_socket);
 	WSACleanup();
 	m_socket = INVALID_SOCKET;
-}
-
-Message* TcpServer::CreateMessage(const char* buffer)
-{
-	tinyxml2::XMLDocument doc;
-	tinyxml2::XMLError err = doc.Parse(buffer);
-	if (err != tinyxml2::XML_SUCCESS)
-	{
-		return nullptr;
-	}
-
-	if (tinyxml2::XMLElement* rootElem = doc.FirstChildElement("message"))
-	{
-		std::string type = rootElem->Attribute("type");
-		return m_messages[type]();
-	}
-
-	return nullptr;
 }

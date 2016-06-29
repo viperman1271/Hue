@@ -5,13 +5,16 @@
 #include <iostream>
 
 #undef UNICODE
+
+#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
+#endif //WIN32_LEAN_AND_MEAN
 
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
-#include "StatusMessage.h"
+#include <rpc-messages/status.h>
 
 #define DEFAULT_BUFLEN 4096
 #define DEFAULT_PORT "8888"
@@ -104,17 +107,17 @@ void* TcpServer::ClientThread(void* ptr)
 	TcpServer* tcpServer = ti->instance;
 	SOCKET socket = static_cast<SOCKET>(ti->socket);
 
-	Message* msg = nullptr;
-	int status;
+	xmlrpc::message* msg = nullptr;
+	int networkStatus;
 	{
-		msg = new StatusMessage(StatusMessage::ID::WELCOME);
-		msg->Serialize();
-		status = send(socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		msg = new status(status::ID::WELCOME);
+		msg->serialize();
+		networkStatus = send(socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
 	bool bSocketError = false;
-	if (status != -1)
+	if (networkStatus != -1)
 	{
 		char buffer[4096];
 		while (true)
@@ -128,8 +131,14 @@ void* TcpServer::ClientThread(void* ptr)
 			}
 			else
 			{
-				Message* message = tcpServer->CreateMessage(buffer);
-				message->Deserialize(buffer);
+				xmlrpc::message* message = tcpServer->CreateMessage(buffer, bytesRecv);
+				if (message == nullptr)
+				{
+					bSocketError = true;
+					break;
+				}
+
+				message->deserialize(buffer, bytesRecv);
 
 				bool result = tcpServer->HandleMessage(ti, message);
 				delete message;
@@ -141,9 +150,9 @@ void* TcpServer::ClientThread(void* ptr)
 	}
 	if (!bSocketError)
 	{
-		msg = new StatusMessage(StatusMessage::ID::CLOSE);
-		msg->Serialize();
-		status = send(socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
+		msg = new status(status::ID::CLOSE);
+		msg->serialize();
+		networkStatus = send(socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 		delete msg;
 		msg = nullptr;
 	}
@@ -151,7 +160,7 @@ void* TcpServer::ClientThread(void* ptr)
 	return nullptr;
 }
 
-void TcpServer::TransmitMessage(TcpServerThreadInfo* threadInfo, Message* msg)
+void TcpServer::TransmitMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg)
 {
 	send(threadInfo->socket, msg->GetRawMsg().c_str(), msg->GetRawMsg().length(), 0);
 }

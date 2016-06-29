@@ -2,7 +2,7 @@
 
 #include <xmlrpc/message.h>
 
-class StatusMessage : public xmlrpc::message
+class status : public xmlrpc::message
 {
 public:
 	enum class ID
@@ -12,8 +12,8 @@ public:
 		CLOSE,
 	};
 	
-	StatusMessage();
-	StatusMessage(ID eMsgId);
+	status();
+	status(ID eMsgId);
 
 	ID GetMessageID() const { return m_id; }
 

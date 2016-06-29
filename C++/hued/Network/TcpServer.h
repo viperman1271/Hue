@@ -51,11 +51,8 @@ public:
 protected:
 	virtual bool HandleMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg);
 	virtual void TransmitMessage(TcpServerThreadInfo* threadInfo, xmlrpc::message* msg);
+	virtual xmlrpc::message* CreateMessage(const char* buffer, size_t msgSize);
 
 private:
-
-	xmlrpc::message* CreateMessage(const char* buffer);
-
-	std::map<std::string, std::function<xmlrpc::message*(void)>> m_messages;
 	std::vector<TcpServerThreadInfo*> m_clientThreads;
 };
